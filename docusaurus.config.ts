@@ -158,8 +158,13 @@ const config: Config = {
 
 
 if (blogEnabled) {
-  (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
-  (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
+  (config.themeConfig!.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
+  (
+    config.themeConfig!.footer as any
+  ).links[2].items.push({
+    to: '/blog',
+    label: 'Blog',
+  });
 }
 
 export default config;

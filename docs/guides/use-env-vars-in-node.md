@@ -1,6 +1,3 @@
----
-sidebar_position: 2
----
 # Using `.env` Files in Node.js
 
 In a Node.js application, environment variables can be managed using a `.env` file. Typically, the dotenv package is used to load these variables at runtime.
