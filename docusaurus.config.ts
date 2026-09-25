@@ -5,24 +5,22 @@ import {config as dotenvconfig}  from "dotenv";
 
 dotenvconfig();
 
-/* TODO: change to read configuration from environment */
-const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
+const blogEnabled = process.env.BLOG_ENABLED === 'true';
+const gitRepositoryUrl =
+  process.env.GIT_REPOSITORY_URL ??
+  'https://github.com/PhilippKlinger/my-dso-blog';
 
 const config: Config = {
-  title: 'DSO Live Demo Docs',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Philipp Klinger | DevSecOps Portfolio',
+  tagline: 'Full-Stack Developer & DevSecOps Enthusiast — projects, practices, and lessons learned',
 
-  // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://spmse.github.io",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL ?? "/",
+  url: process.env.DEPLOYMENT_URL ?? 'https://PhilippKlinger.github.io',
+  baseUrl: process.env.BASE_URL ?? '/my-dso-blog/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: process.env.GITHUB_ORG, // Usually your GitHub org/user name.
-  projectName: process.env.GITHUB_PROJECT, // Usually your repo name.
+  organizationName: process.env.GITHUB_ORG ?? 'PhilippKlinger',
+  projectName: process.env.GITHUB_PROJECT ?? 'my-dso-blog',
 
   deploymentBranch: process.env.DEPLOYMENT_BRANCH,
 
@@ -43,10 +41,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/spmse/dev-blog-template',
+          editUrl: `${gitRepositoryUrl}/edit/main/`,
         },
         blog: blogEnabled ? 
           {
@@ -55,10 +50,7 @@ const config: Config = {
               type: ['rss', 'atom'],
               xslt: true,
             },
-            // Please change this to your repo.
-            // Remove this to remove the "edit this page" links.
-            editUrl:
-              'https://github.com/spmse/dev-blog-template',
+            editUrl: `${gitRepositoryUrl}/edit/main/`,
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -73,24 +65,18 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      title: 'Philipp Klinger',
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'projectSidebar',
           position: 'left',
-          label: 'Docs',
+          label: 'Projects',
         },
         {
-          href: 'https://github.com/spmse/dev-blog-template',
-          label: 'Github',
+          href: gitRepositoryUrl,
+          label: 'GitHub',
           position: 'right',
         },
       ],
@@ -102,25 +88,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/guides/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Projects',
+              to: '/docs/projects',
             },
           ],
         },
@@ -128,13 +97,13 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            }
+              label: 'Repository',
+              href: gitRepositoryUrl,
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Philipp Klinger.`,
     },
     prism: {
       theme: prismThemes.github,
@@ -161,7 +130,7 @@ if (blogEnabled) {
   (config.themeConfig!.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
   (
     config.themeConfig!.footer as any
-  ).links[2].items.push({
+  ).links[1].items.push({
     to: '/blog',
     label: 'Blog',
   });

@@ -1,104 +1,40 @@
-# My Developer Blog
+# Philipp Klinger — DevSecOps Portfolio
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains my DevSecOps project documentation, built as a static site with [Docusaurus](https://docusaurus.io/). The [projects overview](docs/projects/overview.mdx) links to concise reports and the corresponding source repositories. Project-specific implementation and verification details remain in those repositories.
 
-## Repository Description
+## Run locally
 
-This repository hosts a developer blog built with Docusaurus. It includes tools and scripts for creating, managing, and deploying static web content. The software supports rapid local development, customizable theming, and seamless deployment to platforms like GitHub Pages or NGINX.
+Use Node.js 24 or newer and npm. Copy `example.env` to a local `.env` if you need to override the site URL or other settings; `.env` is ignored by Git.
 
-## Table of Contents
+```bash
+npm ci
+npm start
+```
 
-- [My Developer Blog](#my-developer-blog)
-  - [Repository Description](#repository-description)
-  - [Table of Contents](#table-of-contents)
-  - [Quickstart](#quickstart)
-    - [Prerequisites](#prerequisites)
-  - [Repository Structure](#repository-structure)
-  - [Deployment](#deployment)
-    - [Deploy to Github Pages](#deploy-to-github-pages)
-    - [Deploying using NGINX](#deploying-using-nginx)
-    - [Contributing](#contributing)
+The development server prints its local URL and reloads when content changes. To check the production output:
 
-## Quickstart
+```bash
+npm run typecheck
+npm run build
+npm run serve
+```
 
-### Prerequisites
+The static output is written to `build/`, which is not committed.
 
-- [Node.js](https://nodejs.org/) (v24 or later recommended)
-- [Docker](https://www.docker.com/products/docker-desktop) (only required if [deploying using NGINX](#deploying-using-nginx))
+## Repository files
 
-1. Installation
+- `docusaurus.config.ts` defines the site URL, navigation, footer, docs, and optional blog.
+- `example.env` documents the non-secret deployment and repository URL settings. A local `.env` can override the defaults.
+- `docs/projects/` contains the project overview and reports; `sidebars.ts` generates their navigation.
+- `src/pages/index.tsx` and `src/components/HomepageFeatures/` render the homepage; their CSS modules control its layout.
+- `static/` holds assets used by the site.
+- `.github/workflows/main.yml` calls the build/deployment workflow for pull requests and pushes to `main`.
+- `Dockerfile` is an optional container-hosting path and is not used by the GitHub Pages workflow.
 
-   ```
-   $ npm install
-   ```
-
-2. Local Development
-
-   ```
-   $ npm start
-   ```
-
-   This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-3. Build
-
-   ```
-   $ npm run build
-   ```
-
-   This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-4. Deployment
-
-   In order to deploy onto Github Pages, ensure that your `docusaurus.config.ts` conforms with the [documentation guidelines](https://docusaurus.io/docs/deployment#deploying-to-github-pages). After that is ensured run the following command to deploy:
-
-   ```
-   $ USE_SSH=true npm run deploy
-   ```
-
-For detailed information about deploying this Docusaurus project, refer to the [Deployment](#deployment) section below.
-
-## Repository Structure
-
-The repository is organized as follows:
-
-- `blog/`: Contains markdown files for blog posts. Blog-related metadata is automatically picked up by the Docusaurus configuration.
-- `docs/`: Contains markdown files for documentation. These files are referenced in `sidebars.ts` to define the sidebar structure.
-- `src/`: Contains custom React components, CSS, and JavaScript for additional functionality or theming.
-- `static/`: Stores static assets (e.g., images, icons) served directly without processing.
-- `sidebars.ts`: Configures the structure of sidebars in the documentation section.
-- `docusaurus.config.ts`: Main configuration file for customizing and managing Docusaurus behavior.
-- `build/`: Generated after running the `npm run build` command. Contains the static website files ready for deployment.
-
-New content can be added as follows:
-
-- Add new documentation files to the `docs/` folder.
-- Add new blog posts to the `blog/` folder. No additional configuration is required.
+The example blog posts have been removed. The blog is disabled by default and should only be enabled after original posts are ready.
 
 ## Deployment
 
-### Deploy to Github Pages
+GitHub Actions builds the site on pull requests without deploying it. A push to `main` triggers the workflow that publishes the generated static files to GitHub Pages, provided the repository's Pages source is set to **GitHub Actions**. The intended project-site URL is `https://PhilippKlinger.github.io/my-dso-blog/`.
 
-To deploy using SSH:
-
-```
-$ USE_SSH=true npm run deploy
-```
-
-To deploy without using SSH, run:
-
-```
-$ GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-### Deploying using NGINX
-
-To deploy the site using NGINX and Docker, follow this [guide](./docs/guides/deploy-docusaurus-with-docker-and-nginx.md)
-
-### Contributing
-
-Currently, this project does not seek collaborators, but we're open to suggestions regarding enhancements or guides to prepare.
-Open an issue with a detailed description on the change you suggest and elaborate why it's benefitial for the project and vast majority.
-If accepted in the discussion, open a pull request from your fork of this repository to contribute your changes.
+The Pages setting, deployed URL, and pull-request checks must be verified in GitHub before submission; a successful local build does not establish that the site is live.
