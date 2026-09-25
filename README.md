@@ -1,40 +1,37 @@
 # Philipp Klinger — DevSecOps Portfolio
 
-This repository contains my DevSecOps project documentation, built as a static site with [Docusaurus](https://docusaurus.io/). The [projects overview](docs/projects/overview.mdx) links to concise reports and the corresponding source repositories. Project-specific implementation and verification details remain in those repositories.
+This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) links to short project reports and their source repositories; implementation and operational details remain in those repositories. The example blog posts were removed, and the blog feature is disabled until original posts are available.
 
-## Run locally
+## Local verification
 
-Use Node.js 24 or newer and npm. Copy `example.env` to a local `.env` if you need to override the site URL or other settings; `.env` is ignored by Git.
+Requires Node.js 24 or newer and npm. From the repository root:
 
 ```bash
 npm ci
-npm start
-```
-
-The development server prints its local URL and reloads when content changes. To check the production output:
-
-```bash
 npm run typecheck
 npm run build
-npm run serve
 ```
 
-The static output is written to `build/`, which is not committed.
+`npm start` serves the site with live reload; `npm run serve` previews the generated `build/` output. The defaults in `docusaurus.config.ts` work locally. Copy `example.env` to an untracked `.env` only when overriding public configuration values; never commit secrets.
 
-## Repository files
+## Repository contents
 
-- `docusaurus.config.ts` defines the site URL, navigation, footer, docs, and optional blog.
-- `example.env` documents the non-secret deployment and repository URL settings. A local `.env` can override the defaults.
-- `docs/projects/` contains the project overview and reports; `sidebars.ts` generates their navigation.
-- `src/pages/index.tsx` and `src/components/HomepageFeatures/` render the homepage; their CSS modules control its layout.
-- `static/` holds assets used by the site.
-- `.github/workflows/main.yml` calls the build/deployment workflow for pull requests and pushes to `main`.
-- `Dockerfile` is an optional container-hosting path and is not used by the GitHub Pages workflow.
-
-The example blog posts have been removed. The blog is disabled by default and should only be enabled after original posts are ready.
+| Files | Purpose |
+| --- | --- |
+| `package.json`, `package-lock.json` | npm scripts, dependencies, and reproducible dependency versions. |
+| `docusaurus.config.ts`, `example.env` | Site identity, URLs, navigation, footer, optional blog, and example environment settings. |
+| `sidebars.ts`, `docs/projects/_category_.yaml` | Generated docs navigation and project-category metadata. |
+| `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md` | Project index and documentation of this site. |
+| `docs/projects/minecraft-server.md`, `docs/projects/wordpress-multicontainer-setup.md`, `docs/projects/conduit-container.md` | Short reports that link to their source repositories. |
+| `src/pages/index.tsx`, `src/pages/index.module.css` | Homepage and its layout. |
+| `src/components/HomepageFeatures/index.tsx`, `src/components/HomepageFeatures/styles.module.css`, `src/css/custom.css` | Project cards and site styling. |
+| `src/components/GithubLinkAdmonition/index.tsx`, `static/img/github.svg` | Retained GitHub-link component and icon; the current pages do not use them. |
+| `static/.nojekyll` | Static GitHub Pages marker. |
+| `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |
+| `.github/workflows/main.yml`, `.github/workflows/deploy.yaml` | Pull-request build and main-branch Pages deployment workflows. |
+| `.github/workflows/create-pr.yaml`, `.github/workflows/check-open-pr.yaml`, `.github/dependabot.yml` | Pull-request automation/check and dependency-update configuration. |
+| `.gitignore`, `.dockerignore`, `Dockerfile`, `LICENSE` | Ignore rules, optional legacy container build, and existing license. The Dockerfile is not used for GitHub Pages. |
 
 ## Deployment
 
-GitHub Actions builds the site on pull requests without deploying it. A push to `main` triggers the workflow that publishes the generated static files to GitHub Pages, provided the repository's Pages source is set to **GitHub Actions**. The intended project-site URL is `https://PhilippKlinger.github.io/my-dso-blog/`.
-
-The Pages setting, deployed URL, and pull-request checks must be verified in GitHub before submission; a successful local build does not establish that the site is live.
+GitHub Actions builds pull requests and deploys the static site to GitHub Pages after a push to `main`, provided Pages is configured to use **GitHub Actions**. The intended URL is `https://PhilippKlinger.github.io/my-dso-blog/`; the Pages setting, workflow run, and live site still need to be verified before submission.

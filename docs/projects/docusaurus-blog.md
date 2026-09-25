@@ -1,26 +1,26 @@
 ---
 title: Docusaurus Blog
-description: Configuration and verification of this DevSecOps documentation site.
+description: How the Docusaurus starter was configured as a DevSecOps project portfolio.
 sidebar_position: 2
 ---
 
 # Docusaurus Blog
 
-This repository provides a Docusaurus site for my DevSecOps project documentation. The homepage points to a project overview, and each report links to its source repository. Example posts and tutorial pages have been removed so they are not presented as my work.
+This project turns a Docusaurus starter into a place for my DevSecOps project documentation. The [repository README](https://github.com/PhilippKlinger/my-dso-blog) covers the file layout and local commands; this page records the task, changes, and current evidence.
 
-## Configuration
+## Task
 
-- `docusaurus.config.ts` defines the site identity, navigation, project-site URL, and repository edit links.
-- `example.env` documents public configuration values, including `GIT_REPOSITORY_URL`; local `.env` files stay out of Git.
-- `sidebars.ts` generates navigation from `docs/projects/`.
-- `BLOG_ENABLED` keeps the blog section disabled until original posts are available.
+The starter contained generic branding, example posts and tutorials, and links to its source repository. The goal was to configure it as my DevSecOps portfolio, document the setup, and prepare a GitHub Pages deployment without presenting sample content as my work.
 
-## Local verification
+## Implementation
 
-Install dependencies with `npm ci`, run `npm run typecheck`, and generate the static site with `npm run build`. Use `npm start` for live editing or `npm run serve` to preview the production output. The build directory is generated and is not committed.
+1. I established an npm-based Docusaurus 3.10.2 baseline on `main`, then made the portfolio changes on `setup-blog`.
+2. In `docusaurus.config.ts`, I set the site title, tagline, GitHub Pages URL and project path. `example.env` documents `GIT_REPOSITORY_URL`; the config reads that value or uses a default for the repository link and both docs and optional blog `editUrl` values.
+3. I replaced the starter navigation and footer with project and repository links, retained the checklist-required template attribution, and disabled the blog until original posts exist.
+4. I removed sample pages and assets, added a project overview and source-linked project summaries, and documented the local build and intended Actions deployment in the README.
 
-## Deployment path
+## Result and verification
 
-The repository's GitHub Actions workflow builds pull requests and publishes the static output on a push to `main`. GitHub Pages must use **GitHub Actions** as its source. A successful local build does not prove that the Pages setting, workflow run, or public URL is working; those require separate checks before submission.
+The local site now builds a homepage and four project pages without the starter's example posts or tutorials. `npm run typecheck` and `npm run build` pass on `setup-blog`; the build generates static files in `build/`.
 
-[View the source repository](https://github.com/PhilippKlinger/my-dso-blog).
+The existing GitHub Actions workflow is configured to build pull requests and deploy after a push to `main`. The GitHub Pages setting, CI run, and public URL still require verification; the local build alone does not establish a successful deployment.
