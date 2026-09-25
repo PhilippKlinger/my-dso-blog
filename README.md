@@ -1,6 +1,6 @@
 # Philipp Klinger — DevSecOps Portfolio
 
-This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) links to short project reports and their source repositories; implementation and operational details remain in those repositories. The example blog posts were removed, and the blog feature is disabled until original posts are available.
+This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) links to the documentation of this site. The example blog posts were removed, and the blog feature is disabled until original posts are available.
 
 ## Local verification
 
@@ -22,9 +22,8 @@ npm run build
 | `docusaurus.config.ts`, `example.env` | Site identity, URLs, navigation, footer, optional blog, and example environment settings. |
 | `sidebars.ts`, `docs/projects/_category_.yaml` | Generated docs navigation and project-category metadata. |
 | `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md` | Project index and documentation of this site. |
-| `docs/projects/minecraft-server.md`, `docs/projects/wordpress-multicontainer-setup.md`, `docs/projects/conduit-container.md` | Short reports that link to their source repositories. |
 | `src/pages/index.tsx`, `src/pages/index.module.css` | Homepage and its layout. |
-| `src/components/HomepageFeatures/index.tsx`, `src/components/HomepageFeatures/styles.module.css`, `src/css/custom.css` | Project cards and site styling. |
+| `src/css/custom.css` | Shared site styling. |
 | `src/components/GithubLinkAdmonition/index.tsx`, `static/img/github.svg` | Retained GitHub-link component and icon; the current pages do not use them. |
 | `static/.nojekyll` | Static GitHub Pages marker. |
 | `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |

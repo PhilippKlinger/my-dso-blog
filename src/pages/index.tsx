@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -22,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/projects">
-            Explore Projects
+            Read Documentation
           </Link>
         </div>
       </div>
@@ -37,9 +36,6 @@ export default function Home(): React.JSX.Element {
       title={siteConfig.title}
       description="Philipp Klinger's DevSecOps portfolio documenting projects, secure delivery practices, and lessons learned.">
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
     </Layout>
   );
 }
