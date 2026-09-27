@@ -1,6 +1,6 @@
 # Philipp Klinger — DevSecOps Portfolio
 
-This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) links to the documentation of this site. The example blog posts were removed, and the blog feature is disabled until original posts are available.
+This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) starts with the V-Server setup report and also links to the documentation of this site. The example blog posts were removed, and the blog feature is disabled until original posts are available.
 
 ## Local verification
 
@@ -21,7 +21,7 @@ npm run build
 | `package.json`, `package-lock.json` | npm scripts, dependencies, and reproducible dependency versions. |
 | `docusaurus.config.ts`, `example.env` | Site identity, URLs, navigation, footer, optional blog, and example environment settings. |
 | `sidebars.ts`, `docs/projects/_category_.yaml` | Generated docs navigation and project-category metadata. |
-| `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md` | Project index and documentation of this site. |
+| `docs/projects/overview.mdx`, `docs/projects/v-server-setup.md`, `docs/projects/baby-tools-shop.md`, `docs/projects/minecraft-server.md`, `docs/projects/wordpress-multicontainer-setup.md`, `docs/projects/conduit-container.md`, `docs/projects/conduit-deployment.md`, `docs/projects/truck-signs-api.md`, `docs/projects/docusaurus-blog.md` | Project index, V-Server, Baby Tools Shop, Minecraft Server, WordPress, Conduit Container, Conduit Deployment and Truck Signs API reports, and documentation of this site. |
 | `src/pages/index.tsx`, `src/pages/index.module.css` | Homepage and its layout. |
 | `src/css/custom.css` | Shared site styling. |
 | `src/components/GithubLinkAdmonition/index.tsx`, `static/img/github.svg` | Retained GitHub-link component and icon; the current pages do not use them. |
