@@ -23,11 +23,9 @@ The setup needed a repeatable path from initial server access to key-based admin
 
 ## Solution
 
-The project repository contains a step-by-step setup guide and validation commands for SSH, NGINX, the alternative site, Git, and GitHub SSH access. The documentation was merged through [pull request #1](https://github.com/PhilippKlinger/v-server-setup/pull/1) on 11 March 2026.
+The setup guide brings key-based server access, a separate NGINX test site, and GitHub connectivity into one repeatable workflow. It includes checks for SSH access before and after login restrictions are applied, NGINX configuration, and GitHub authentication. This makes the configuration steps and their validation easier to follow.
 
 ## Evidence
 
 - [V-Server setup README](https://github.com/PhilippKlinger/v-server-setup/blob/main/README.md) — the documented configuration steps and checks.
-- [Merged pull request #1](https://github.com/PhilippKlinger/v-server-setup/pull/1) — the review and merge record for the documentation.
-
-The available sources document how to perform the checks, but do not record their individual results or establish the server's current runtime state. Academy acceptance is not evidenced by these sources.
+- [Setup documentation changes](https://github.com/PhilippKlinger/v-server-setup/pull/1) — the changes to the server setup guide.

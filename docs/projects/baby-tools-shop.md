@@ -23,11 +23,11 @@ The container needed environment-specific Django settings, a reliable startup se
 
 ## Solution
 
-The repository contains the Dockerfile, Compose configuration, entrypoint, environment template, and a setup guide for local use and VPS deployment. The containerization work was merged in [pull request #1](https://github.com/PhilippKlinger/baby-tools-shop/pull/1) in April 2026.
+The Django shop runs in a Docker container with Gunicorn and WhiteNoise. Runtime settings come from environment variables, while a named volume keeps the SQLite database and uploaded media outside the container's writable layer. The entrypoint applies migrations before starting the application, and the setup guide explains local use and VPS deployment.
 
 ## Evidence
 
 - [Project README](https://github.com/PhilippKlinger/baby-tools-shop/blob/main/README.md) — setup, configuration, persistence, and validation instructions.
-- [Merged pull request #1](https://github.com/PhilippKlinger/baby-tools-shop/pull/1) — the containerization changes and review history.
+- [Container implementation](https://github.com/PhilippKlinger/baby-tools-shop/pull/1) — the Dockerfile, Compose configuration, and startup changes.
 
-Contemporaneous private session notes record a successful local build and startup, admin access, static files, uploaded media, and persistence checks. They do not establish the current VPS runtime state. Academy acceptance is not evidenced by the available sources.
+My local checks covered the image build, application startup, admin access, static files, uploaded media, and data persistence.

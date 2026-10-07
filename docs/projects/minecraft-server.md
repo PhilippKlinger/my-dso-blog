@@ -23,11 +23,11 @@ The server needed explicit EULA acceptance, checked runtime settings, and a writ
 
 ## Solution
 
-The `feature/setup-server` branch contains the image, Compose service, entrypoint, baseline Fabric mods, and operating guide. Project records document a successful image build, server start, external status check, and named-volume persistence check on 24 July 2026. The academy accepted the project in the final review recorded on 27 July 2026. [Pull request #1](https://github.com/PhilippKlinger/minecraft-server/pull/1) remains open; the implementation has not been merged into `main`.
+The custom image runs a Fabric-enabled Minecraft Java server through Docker Compose. The entrypoint validates the startup settings and prepares the data directory before launching Java. World data, configuration, and mods are stored in a named volume so they can survive container recreation. The operating guide explains configuration, mod management, and server checks.
 
 ## Evidence
 
-- [Feature-branch README](https://github.com/PhilippKlinger/minecraft-server/blob/feature/setup-server/README.md) — the configuration, operation, and validation guide for the implemented branch.
-- [Open pull request #1](https://github.com/PhilippKlinger/minecraft-server/pull/1) — the complete feature diff and current review entry point.
+- [Server setup guide](https://github.com/PhilippKlinger/minecraft-server/blob/feature/setup-server/README.md) — configuration, operation, and validation.
+- [Server implementation](https://github.com/PhilippKlinger/minecraft-server/pull/1) — the image, Compose service, entrypoint, and bundled mods.
 
-The runtime checks above are historical. The available records do not establish today's server state. An optional Java client check and a separately archived restart-after-failure result remain unknown.
+During development, I checked the image build, server startup, external status response, and named-volume persistence. The status response confirms server availability; it does not replace a full connection test with a Minecraft client.

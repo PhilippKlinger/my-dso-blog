@@ -22,12 +22,12 @@ The provided Dockerfile, Compose file, and entrypoint had build, configuration, 
 
 ## Solution
 
-The repaired stack and documentation were merged into `main` through [pull request #1](https://github.com/PhilippKlinger/truck-signs-api/pull/1) on 15 September 2026. The learner confirmed direct academy acceptance that day. The workflows build and test the project; they do not automatically deploy it to a VPS.
+The repaired Compose stack runs the supplied Django API with an internal PostgreSQL service. The entrypoint checks required settings, prepares the database and static files, and starts Gunicorn after initialization. Named volumes retain database data and uploaded media. CI builds and tests the project; deployment to a VPS remains a separate operation.
 
 ## Evidence
 
-- [README at the final feature commit](https://github.com/PhilippKlinger/truck-signs-api/blob/14beb4fab19b5b4cbfc4fcbef9d5a37289206669/README.md) — setup, configuration, CI, and recorded verification.
+- [API setup guide](https://github.com/PhilippKlinger/truck-signs-api/blob/14beb4fab19b5b4cbfc4fcbef9d5a37289206669/README.md) — setup, configuration, CI, and verification.
 - [Compose file](https://github.com/PhilippKlinger/truck-signs-api/blob/14beb4fab19b5b4cbfc4fcbef9d5a37289206669/docker-compose.yml) and [entrypoint](https://github.com/PhilippKlinger/truck-signs-api/blob/14beb4fab19b5b4cbfc4fcbef9d5a37289206669/entrypoint.sh) — service isolation, persistence, and startup sequence.
-- [Merged pull request #1](https://github.com/PhilippKlinger/truck-signs-api/pull/1) — the changes to the supplied project and their review history.
+- [Container fixes](https://github.com/PhilippKlinger/truck-signs-api/pull/1) — the build, configuration, startup, and documentation changes.
 
-Private project records describe a successful local image build, Compose validation, an HTTP `200` response on port `8020`, and retained database data after stack recreation on 8 September. The final project handoff records successful CI checks and 28 Django tests on the feature commit on 15 September. These are historical checks; remaining unrecorded checklist details and today's container or VPS state are unknown.
+My local checks covered the image build, Compose configuration, an HTTP `200` response on port `8020`, and retained database data after stack recreation. CI checks and 28 Django tests also passed for the documented implementation.

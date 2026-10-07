@@ -22,13 +22,13 @@ Building on the VPS made releases hard to trace back to a source revision. Image
 
 ## Solution
 
-The `feature/conduit-deployment` branch contains the CI and staging deployment workflows, production Compose manifest, and operating guide. The learner confirmed academy acceptance on 24 August 2026. [Pull request #2](https://github.com/PhilippKlinger/conduit-container/pull/2) remains open; this deployment scope is not merged into `main`. The final review described the implementation as technically robust, while finding the workflow too complex for the learning goal. The resulting lesson was to compare standard GitHub Actions before adding custom workflow logic.
+The pipeline builds application images in GitHub Actions, publishes them to GHCR, and deploys selected image versions to a staging VPS over SSH. The VPS pulls the images instead of building them locally. Commit tags and image digests connect the deployed containers to their source revision, while rollout checks verify service readiness and running image identity. Deployment is triggered by the staging branch; pushes to `main` run CI only.
 
 ## Evidence
 
-- [Feature-branch README](https://github.com/PhilippKlinger/conduit-container/blob/feature/conduit-deployment/README.md) — the documented CI, staging, configuration, and recovery path.
+- [Deployment guide](https://github.com/PhilippKlinger/conduit-container/blob/feature/conduit-deployment/README.md) — CI, staging, configuration, and recovery.
 - [CI workflow](https://github.com/PhilippKlinger/conduit-container/blob/feature/conduit-deployment/.github/workflows/ci.yml) and [deployment workflow](https://github.com/PhilippKlinger/conduit-container/blob/feature/conduit-deployment/.github/workflows/deployment.yml) — image build, publication, and staging rollout logic.
 - [Production Compose manifest](https://github.com/PhilippKlinger/conduit-container/blob/feature/conduit-deployment/docker-compose.prod.yaml) — runtime images without VPS build contexts.
-- [Open pull request #2](https://github.com/PhilippKlinger/conduit-container/pull/2) — the deployment changes relative to the merged container project.
+- [Pipeline implementation](https://github.com/PhilippKlinger/conduit-container/pull/2) — the CI/CD changes added to the container project.
 
-Private project notes record a successful Actions and staging rollout on an earlier commit, `9570502`, followed by VPS observations of running services, a healthy database, an API response, and logs. They do not establish a deployment test for the current feature head. Navigation, failure-triggered restart, application data persistence, and today's server state remain unknown.
+A development version completed a staging rollout with running services, a healthy database, an API response, and logs. These checks covered basic service startup rather than all application features. The custom workflow logic also adds maintenance work; standard GitHub Actions should be considered before extending it further.

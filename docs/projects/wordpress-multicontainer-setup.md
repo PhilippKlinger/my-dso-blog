@@ -23,12 +23,12 @@ WordPress needed a database that was ready before the application started. Datab
 
 ## Solution
 
-The `feature/server-setup` branch contains the two-service Compose stack and operating guide. The project records report local startup, administrator login, data persistence, and VPS access checks performed by the learner. The academy accepted the project on 28 July 2026. [Pull request #1](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/pull/1) remains open; this feature implementation has not been merged into `main`.
+The Compose stack runs WordPress and MariaDB as separate services. WordPress waits for the database healthcheck, and the database is reachable only within the Compose network. Separate named volumes retain application files and database data when containers are recreated. Credentials are supplied through a local environment file.
 
 ## Evidence
 
-- [Feature-branch README](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/blob/feature/server-setup/README.md) — setup, operation, configuration, and validation guide.
-- [Feature-branch Compose file](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/blob/feature/server-setup/docker-compose.yml) — service, healthcheck, network, and volume definitions.
-- [Open pull request #1](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/pull/1) — the feature diff and current review entry point.
+- [WordPress setup guide](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/blob/feature/server-setup/README.md) — setup, operation, configuration, and validation.
+- [Compose configuration](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/blob/feature/server-setup/docker-compose.yml) — services, healthcheck, network, and volumes.
+- [Stack implementation](https://github.com/PhilippKlinger/wordpress-multicontainer-setup/pull/1) — the container configuration and documentation changes.
 
-The runtime checks above are historical learner reports. The project handoff records a successful `docker compose config --quiet` check on 28 July 2026 but no runtime retest then. Today's local or VPS state and a separately recorded restart-after-failure result remain unknown.
+My development checks covered local startup, administrator login, data persistence, and VPS access. I also validated the Compose configuration with `docker compose config --quiet`.
