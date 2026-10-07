@@ -1,6 +1,6 @@
-# Philipp Klinger — DevSecOps Portfolio
+# Philipp Klinger — Juice Shop Master
 
-This repository contains my DevSecOps project documentation as a static Docusaurus site. The [project overview](docs/projects/overview.mdx) links to the documentation of this site. The example blog posts were removed, and the blog feature is disabled until original posts are available.
+This branch contains my Juice Shop Master documentation in the existing Docusaurus site. The [project overview](docs/projects/overview.mdx) links to the challenge reports and the documentation of the site itself. Database Schema is solved and documented; Access Log and Unsigned JWT are planned. The blog feature is disabled.
 
 ## Local verification
 
@@ -22,6 +22,7 @@ npm run build
 | `docusaurus.config.ts`, `example.env` | Site identity, URLs, navigation, footer, optional blog, and example environment settings. |
 | `sidebars.ts`, `docs/projects/_category_.yaml` | Generated docs navigation and project-category metadata. |
 | `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md` | Project index and documentation of this site. |
+| `docs/projects/Juice Shop Master/README.md`, `docs/projects/Juice Shop Master/_category_.yaml`, `docs/projects/Juice Shop Master/database-schema/README.md` | Juice Shop Master overview, navigation, and the Database Schema report. The planned selection also includes Access Log and Unsigned JWT. |
 | `src/pages/index.tsx`, `src/pages/index.module.css` | Homepage and its layout. |
 | `src/css/custom.css` | Shared site styling. |
 | `src/components/GithubLinkAdmonition/index.tsx`, `static/img/github.svg` | Retained GitHub-link component and icon; the current pages do not use them. |
@@ -33,4 +34,4 @@ npm run build
 
 ## Deployment
 
-GitHub Actions builds pull requests and deploys the static site to GitHub Pages after a push to `main`, provided Pages is configured to use **GitHub Actions**. The intended URL is `https://PhilippKlinger.github.io/my-dso-blog/`; the Pages setting, workflow run, and live site still need to be verified before submission.
+GitHub Actions builds pull requests and deploys the static site to GitHub Pages after a push to `main`, provided Pages is configured to use **GitHub Actions**. The site is published at `https://PhilippKlinger.github.io/my-dso-blog/`; feature-branch changes appear there after they are merged into `main`.
