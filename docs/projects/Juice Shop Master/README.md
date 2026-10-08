@@ -1,9 +1,11 @@
 # Juice Shop Master
 
-I used OWASP Juice Shop to investigate web vulnerabilities in my own Kali Linux training lab. This project documents three challenges I solved during my DevSecOps training: Database Schema, Misplaced Signature File, and Unsigned JWT. Each report follows my investigation, the result I observed, and the security lesson behind it.
+Juice Shop Master is a project in my DevSecOps training at Developer Akademie. I solved three challenges in my own Kali Linux lab: Database Schema, Misplaced Signature File, and Unsigned JWT. These reports document how I investigated each vulnerability, tested my ideas, and understood the results. I mainly used Burp Suite to intercept, modify, and resend HTTP requests.
 
-:::info
-**Educational use and authorized testing:** OWASP Juice Shop is an intentionally vulnerable training application. I worked only in my own controlled lab with fictional data to understand attack methods and their defenses. These techniques should only be used on systems you own or are explicitly authorized to test.
+:::warning Educational use and authorized testing
+
+OWASP Juice Shop is an intentionally vulnerable training application. I worked only in my own controlled lab with fictional data to understand attack methods and their defenses. Only use these techniques in your own lab or on systems you have explicit permission to test.
+
 :::
 
 ## Table of Contents
@@ -14,11 +16,19 @@ I used OWASP Juice Shop to investigate web vulnerabilities in my own Kali Linux 
 
 ## About OWASP Juice Shop
 
-[OWASP Juice Shop](https://owasp.org/projects/juice-shop) is a deliberately insecure web application for security training. It includes challenges across different vulnerability categories and tracks progress on a score board. The three reports below show how I investigated specific behavior in the application and connected the observed results to possible defenses.
+[OWASP Juice Shop](https://owasp.org/projects/juice-shop) is an intentionally vulnerable web application for security training. It offers challenges across different vulnerability categories and tracks completed challenges on a scoreboard.
 
 ## Quickstart
 
 This is the manual way to start Juice Shop in my Kali Linux training VM. Use only an instance you control or are authorized to test.
+
+My lab used [OWASP Juice Shop v20.2.0](https://github.com/juice-shop/juice-shop/releases/tag/v20.2.0) for all three challenges.
+
+:::warning Lab safety
+
+Keep this intentionally vulnerable application in an isolated training environment. Do not expose it to the public internet or use real personal data or reused passwords. Opening `localhost` in a browser does not by itself restrict network access to the server.
+
+:::
 
 ### Prerequisites
 
@@ -38,8 +48,6 @@ This is the manual way to start Juice Shop in my Kali Linux training VM. Use onl
    ```
 
 5. Open `http://localhost:3000` in the Kali VM's browser.
-
-My own VM also starts Juice Shop automatically, but the manual command above is enough. For other installation methods and more detail, see the official [running guide](https://pwning.owasp-juice.shop/companion-guide/local/part1/running.html). To run this Docusaurus site locally, follow the [repository quickstart](https://github.com/PhilippKlinger/my-dso-blog#quickstart).
 
 ## Challenges
 
