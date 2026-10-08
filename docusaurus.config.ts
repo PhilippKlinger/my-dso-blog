@@ -13,6 +13,7 @@ const gitRepositoryUrl =
 const config: Config = {
   title: 'Philipp Klinger | DevSecOps Portfolio',
   tagline: 'Full-Stack Developer & DevSecOps Enthusiast — projects, practices, and lessons learned',
+  favicon: 'img/devsecops.png',
 
   url: process.env.DEPLOYMENT_URL ?? 'https://PhilippKlinger.github.io',
   baseUrl: process.env.BASE_URL ?? '/my-dso-blog/',
@@ -71,6 +72,10 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: 'Philipp Klinger',
+      logo: {
+        alt: 'DevSecOps shield logo',
+        src: 'img/devsecops.png',
+      },
       items: [
         {
           type: 'docSidebar',
