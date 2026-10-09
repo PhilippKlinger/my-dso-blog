@@ -1,37 +1,47 @@
 # DevSecOps Learning Journal
 
-This repository contains my Docusaurus site for documenting projects from my DevSecOps training. The project pages explain the tasks, my approach, the results I observed, and the lessons relevant to secure development and operations.
+I use this Docusaurus site to document my DevSecOps training projects. Each report explains the task, my approach, the results, and what I learned.
+
+[Visit the learning journal](https://philippklinger.github.io/my-dso-blog/)
 
 ## Table of Contents
 
 - [Projects](#projects)
 - [Quickstart](#quickstart)
-- [Local verification](#local-verification)
-- [Repository contents](#repository-contents)
+- [Configuration](#configuration)
+- [Validation](#validation)
 - [Deployment](#deployment)
 
 ## Projects
 
 - [Docusaurus Blog](docs/projects/docusaurus-blog.md) explains how I configured and deployed this documentation site.
-- [Juice Shop Master](docs/projects/Juice%20Shop%20Master/README.md) documents three challenges completed in my own OWASP Juice Shop training lab: Database Schema, Misplaced Signature File, and Unsigned JWT.
+- [Juice Shop Master](docs/projects/Juice%20Shop%20Master/README.md) documents three solved security challenges and their defensive lessons from my OWASP Juice Shop lab.
 
 > [!IMPORTANT]
-> The Juice Shop exercises document authorized testing of an intentionally vulnerable lab for educational and defensive purposes. They do not describe tests against third-party systems or real user data.
-
-The [project overview](docs/projects/overview.mdx) provides the entry point to the documentation site.
+> The Juice Shop exercises are for educational and defensive purposes and cover authorized testing in my own intentionally vulnerable lab.
 
 ## Quickstart
 
-The documentation site requires Node.js 24 or newer and npm. From the repository root:
+Requirements: Git, Node.js 24 or newer, and npm.
+
+Clone the repository, install dependencies, and start the documentation site:
 
 ```bash
+git clone https://github.com/PhilippKlinger/my-dso-blog.git
+cd my-dso-blog
 npm ci
 npm start
 ```
 
-`npm start` runs the Docusaurus development server with live reload. Instructions for running OWASP Juice Shop itself are in the [Juice Shop Master guide](docs/projects/Juice%20Shop%20Master/README.md#quickstart).
+Open the local URL printed in the terminal. The development server reloads the site when you edit its content.
 
-## Local verification
+## Configuration
+
+The defaults in `docusaurus.config.ts` work locally. To override the public site URLs and repository settings, copy `example.env` to `.env` and adjust the values. Keep `.env` untracked and never commit secrets.
+
+## Validation
+
+Check TypeScript, build the static site, and preview the production output:
 
 ```bash
 npm run typecheck
@@ -39,24 +49,28 @@ npm run build
 npm run serve
 ```
 
-`npm run build` generates the static site in `build/`, and `npm run serve` previews that output. The defaults in `docusaurus.config.ts` work locally. Copy `example.env` to an untracked `.env` only if you need to override public configuration values; do not commit secrets.
-
-## Repository contents
-
-| Files | Purpose |
-| --- | --- |
-| `package.json`, `package-lock.json` | npm scripts, dependencies, and reproducible dependency versions. |
-| `docusaurus.config.ts`, `example.env` | Site identity, URLs, navigation, footer, optional blog, and example environment settings. |
-| `sidebars.ts`, `docs/projects/_category_.yaml` | Generated documentation navigation and project-category metadata. |
-| `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md` | Project index and documentation of this Docusaurus site. |
-| `docs/projects/Juice Shop Master/` | Project README, navigation metadata, and separate reports for Database Schema, Misplaced Signature File, and Unsigned JWT. |
-| `src/pages/`, `src/css/custom.css` | Homepage, layout, and shared styling. |
-| `src/components/GithubLinkAdmonition/`, `static/img/github.svg` | Retained GitHub-link component and icon; the current pages do not use them. |
-| `static/.nojekyll` | Static GitHub Pages marker. |
-| `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |
-| `.github/workflows/` | Pull-request build and main-branch Pages deployment workflows. |
-| `.gitignore`, `.dockerignore`, `Dockerfile`, `LICENSE` | Ignore rules, optional legacy container build, and existing license. The Dockerfile is not used for GitHub Pages. |
+The build writes the static site to `build/`. Open the preview URL printed in the terminal to check the generated pages and navigation.
 
 ## Deployment
 
-GitHub Actions builds pull requests and deploys the static site to GitHub Pages after a push to `main`, provided Pages is configured to use **GitHub Actions**. The published site is at `https://PhilippKlinger.github.io/my-dso-blog/`; changes from a feature branch appear there after they are merged into `main`.
+GitHub Actions builds pull requests targeting `main` and deploys the site to GitHub Pages after a push to `main`, with Pages configured to use **GitHub Actions**. Feature-branch changes reach the published site after they are merged into `main`.
+
+<details>
+<summary>Repository reference</summary>
+
+| Files | Purpose |
+| --- | --- |
+| `package.json`, `package-lock.json` | npm commands and dependency versions. |
+| `docusaurus.config.ts`, `example.env` | Site configuration and optional environment overrides. |
+| `sidebars.ts`, `docs/projects/_category_.yaml` | Documentation navigation. |
+| `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md`, `docs/projects/Juice Shop Master/` | Project overview and reports. |
+| `src/pages/`, `src/css/custom.css` | Homepage and shared styling. |
+| `src/components/GithubLinkAdmonition/`, `static/img/github.svg` | Unused template component and icon. |
+| `static/.nojekyll` | Static GitHub Pages marker. |
+| `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |
+| `.github/workflows/` | Build and deployment automation. |
+| `.gitignore`, `.dockerignore` | Git and Docker exclusions. |
+| `Dockerfile` | Legacy container build, unused by GitHub Pages. |
+| `LICENSE` | Repository license. |
+
+</details>
