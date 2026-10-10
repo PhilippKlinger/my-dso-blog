@@ -35,6 +35,13 @@ Keep this intentionally vulnerable application in an isolated training environme
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - The [pre-built Kali Linux VirtualBox image](https://www.kali.org/get-kali/) and Kali's [import guide](https://www.kali.org/docs/virtualization/import-premade-virtualbox/)
 - A Node.js version supported by the Juice Shop release you choose; check the official [running guide](https://pwning.owasp-juice.shop/companion-guide/local/part1/running.html)
+- [Burp Suite Community Edition](https://portswigger.net/burp/communitydownload) for intercepting HTTP requests with Proxy and modifying and resending them with Repeater
+- A browser connected to Burp's proxy, such as the built-in Burp Browser or Firefox configured to use Burp
+
+The reports also reference these browser-based helpers; no separate installation is needed:
+
+- [CyberChef](https://gchq.github.io/CyberChef/) for URL encoding in Database Schema and optional encoding checks for Misplaced Signature File
+- [jwt.io](https://www.jwt.io/) for decoding and preparing JWTs in Unsigned JWT; use only disposable lab tokens with fictional data, as explained in the [token safety guidance](./unsigned-jwt/README.md#tests)
 
 ### Start the lab
 

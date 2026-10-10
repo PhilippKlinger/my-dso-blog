@@ -6,6 +6,10 @@ sidebar_label: 'Challenge: Database Schema'
 
 **Category:** Injection · **Difficulty:** 3 stars
 
+**CWE:** [CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')](https://cwe.mitre.org/data/definitions/89.html)
+
+For the required tools, see the [project prerequisites](../README.md#prerequisites).
+
 :::warning Authorized lab use only
 
 This report uses my own Juice Shop training lab. Only repeat these steps in your own lab or with explicit permission. See the [project's safety guidance](../README.md#quickstart).

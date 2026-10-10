@@ -6,6 +6,10 @@ sidebar_label: 'Challenge: Unsigned JWT'
 
 **Category:** Vulnerable Components · **Difficulty:** 5 stars
 
+**CWE:** [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+
+For the required tools, see the [project prerequisites](../README.md#prerequisites).
+
 :::warning Authorized lab use only
 
 This report uses my own Juice Shop training lab. Only repeat these steps in your own lab or with explicit permission. See the [project's safety guidance](../README.md#quickstart).

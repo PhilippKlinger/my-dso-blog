@@ -6,6 +6,10 @@ sidebar_label: 'Challenge: Misplaced Signature File'
 
 **Category:** Observability Failures · **Difficulty:** 4 stars
 
+**CWE:** [CWE-552: Files or Directories Accessible to External Parties](https://cwe.mitre.org/data/definitions/552.html)
+
+For the required tools, see the [project prerequisites](../README.md#prerequisites).
+
 :::warning Authorized lab use only
 
 This report uses my own Juice Shop training lab. Only repeat these steps in your own lab or with explicit permission. See the [project's safety guidance](../README.md#quickstart).

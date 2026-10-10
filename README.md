@@ -8,9 +8,10 @@ I use this Docusaurus site to document my DevSecOps training projects. Each repo
 
 - [Projects](#projects)
 - [Quickstart](#quickstart)
-- [Configuration](#configuration)
-- [Validation](#validation)
-- [Deployment](#deployment)
+- [Usage](#usage)
+  - [Configuration](#configuration)
+  - [Validation](#validation)
+  - [Deployment](#deployment)
 
 ## Projects
 
@@ -35,11 +36,15 @@ npm start
 
 Open the local URL printed in the terminal. The development server reloads the site when you edit its content.
 
-## Configuration
+## Usage
+
+### Configuration
 
 The defaults in `docusaurus.config.ts` work locally. To override the public site URLs and repository settings, copy `example.env` to `.env` and adjust the values. Keep `.env` untracked and never commit secrets.
 
-## Validation
+Restart the development server after changing these settings. For published pages, the values must be available when the site is built.
+
+### Validation
 
 Check TypeScript, build the static site, and preview the production output:
 
@@ -51,7 +56,7 @@ npm run serve
 
 The build writes the static site to `build/`. Open the preview URL printed in the terminal to check the generated pages and navigation.
 
-## Deployment
+### Deployment
 
 GitHub Actions builds pull requests targeting `main` and deploys the site to GitHub Pages after a push to `main`, with Pages configured to use **GitHub Actions**. Feature-branch changes reach the published site after they are merged into `main`.
 
