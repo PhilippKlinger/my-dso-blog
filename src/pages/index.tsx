@@ -1,33 +1,8 @@
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
+import HeroSection from '@site/src/components/hero-section';
 
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className={clsx('hero__subtitle', styles.subtitle)}>
-          {siteConfig.tagline}
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/projects">
-            Read Documentation
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import styles from '@site/src/css/portfolio.module.css';
 
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
@@ -35,7 +10,9 @@ export default function Home(): React.JSX.Element {
     <Layout
       title={siteConfig.title}
       description="Philipp Klinger's DevSecOps portfolio documenting projects, secure delivery practices, and lessons learned.">
-      <HomepageHeader />
+      <main className={styles.portfolio}>
+        <HeroSection />
+      </main>
     </Layout>
   );
 }
