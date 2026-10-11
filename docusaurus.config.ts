@@ -88,6 +88,9 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        ...(blogEnabled
+          ? [{to: '/blog', label: 'Blog', position: 'left' as const}]
+          : []),
       ],
     },
     footer: {
@@ -113,6 +116,7 @@ const config: Config = {
               label: 'Template',
               href: 'https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template',
             },
+            ...(blogEnabled ? [{to: '/blog', label: 'Blog'}] : []),
           ],
         },
       ],
@@ -138,15 +142,5 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-
-if (blogEnabled) {
-  (config.themeConfig!.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
-  (
-    config.themeConfig!.footer as any
-  ).links[1].items.push({
-    to: '/blog',
-    label: 'Blog',
-  });
-}
 
 export default config;
