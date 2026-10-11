@@ -11,6 +11,9 @@
   --portfolio-color-text: #fff;
   --portfolio-color-paper: #f8f5ec;
   --portfolio-color-action-hover: #2f4563;
+  --portfolio-color-background: #262e34;
+  --portfolio-color-surface: #313d47;
+  --portfolio-color-muted: #738398;
   --portfolio-font-family: 'Portfolio Quicksand', sans-serif;
   --portfolio-weight-regular: 400;
   --portfolio-weight-medium: 500;
@@ -22,6 +25,9 @@
   --portfolio-text-body: 1.375rem;
   --portfolio-text-action: 1.25rem;
   --portfolio-text-navigation: 1.5rem;
+  --portfolio-text-heading: 4rem;
+  --portfolio-text-label: 1.375rem;
+  --portfolio-text-detail: 1.125rem;
   --portfolio-anchor-offset: 7rem;
   --portfolio-leading: 1.2;
   --portfolio-leading-name: 1.2;
@@ -57,6 +63,9 @@
     --portfolio-text-body: 1rem;
     --portfolio-text-action: 1rem;
     --portfolio-text-navigation: 1.375rem;
+    --portfolio-text-heading: 2rem;
+    --portfolio-text-label: 1rem;
+    --portfolio-text-detail: 0.875rem;
     --portfolio-anchor-offset: 5rem;
     --portfolio-leading-name: 1;
     --portfolio-weight-body: var(--portfolio-weight-medium);

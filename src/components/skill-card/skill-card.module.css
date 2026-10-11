@@ -1,0 +1,98 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--portfolio-space-md);
+  min-height: 12.5rem;
+  padding: var(--portfolio-space-md);
+  border-radius: var(--portfolio-radius-card);
+  background: var(--portfolio-color-surface);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+.identity {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--portfolio-space-xs);
+  text-align: center;
+}
+
+.identity img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.name {
+  max-width: 12rem;
+  margin: 0;
+  font-size: var(--portfolio-text-label);
+  font-weight: var(--portfolio-weight-regular);
+  line-height: var(--portfolio-leading);
+  overflow-wrap: anywhere;
+}
+
+.details {
+  grid-column: 2;
+  margin: 0;
+  padding-left: var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-detail);
+  visibility: hidden;
+}
+
+.card:hover .identity,
+.card:focus-within .identity {
+  position: static;
+}
+
+.card:hover .details,
+.card:focus-within .details {
+  visibility: visible;
+}
+
+@media (min-width: 997px) {
+  .card:hover .identity img,
+  .card:focus-within .identity img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .card:hover .name,
+  .card:focus-within .name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 996px) {
+  .card {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: var(--portfolio-space-sm);
+    min-height: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .identity {
+    position: static;
+  }
+
+  .identity img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .details {
+    visibility: visible;
+  }
+}
