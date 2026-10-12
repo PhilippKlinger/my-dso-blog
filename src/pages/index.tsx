@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import HeroSection from '@site/src/components/hero-section';
 import SkillsSection from '@site/src/components/skills-section';
 import ProjectHighlights from '@site/src/components/project-highlights';
+import ContactSection from '@site/src/components/contact-section';
 
 import styles from '@site/src/css/portfolio.module.css';
 
@@ -16,6 +17,7 @@ export default function Home(): React.JSX.Element {
         <HeroSection />
         <SkillsSection />
         <ProjectHighlights />
+        <ContactSection />
       </main>
     </Layout>
   );

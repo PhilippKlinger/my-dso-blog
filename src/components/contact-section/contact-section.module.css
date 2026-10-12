@@ -1,0 +1,101 @@
+.section {
+  padding: var(--portfolio-section-space) var(--portfolio-page-gutter);
+  background: var(--portfolio-color-background);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-areas: 'heading invitation' 'description links';
+  column-gap: var(--portfolio-space-xl);
+  row-gap: var(--portfolio-space-xl);
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+}
+
+.heading,
+.description,
+.invitation {
+  margin: 0;
+}
+
+.heading {
+  grid-area: heading;
+  font-size: var(--portfolio-text-contact-heading);
+  font-weight: var(--portfolio-weight-bold);
+  line-height: var(--portfolio-leading);
+}
+
+.description {
+  grid-area: description;
+  font-size: var(--portfolio-text-detail);
+}
+
+.invitation {
+  grid-area: invitation;
+  align-self: end;
+  font-size: var(--portfolio-text-label);
+}
+
+.links {
+  grid-area: links;
+  display: grid;
+  align-content: start;
+  gap: var(--portfolio-space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--portfolio-text-detail);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--portfolio-space-sm);
+  max-width: 100%;
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
+.link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.icon {
+  flex: 0 0 auto;
+  display: block;
+}
+
+.profileLabel {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--portfolio-color-paper);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+  border-radius: var(--portfolio-space-2xs);
+}
+
+@media (max-width: 996px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'heading' 'description' 'invitation' 'links';
+    row-gap: var(--portfolio-space-lg);
+  }
+
+  .links {
+    gap: var(--portfolio-space-sm);
+  }
+
+  .link {
+    gap: var(--portfolio-space-xs);
+  }
+}
