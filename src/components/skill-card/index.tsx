@@ -2,9 +2,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import type {Skill} from '@site/src/data/skills';
 import styles from './skill-card.module.css';
 
-type Props = {skill: Skill};
+interface SkillCardProps {
+  skill: Skill;
+}
 
-export default function SkillCard({skill}: Props): React.JSX.Element {
+export default function SkillCard({skill}: SkillCardProps): React.JSX.Element {
   const labelId = `skill-${skill.id}`;
   const detailsId = `${labelId}-details`;
 

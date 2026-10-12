@@ -4,14 +4,17 @@ import type {Project} from '@site/src/data/projects';
 import {skills} from '@site/src/data/skills';
 import styles from './project-card.module.css';
 
-type Props = {project: Project; number: number};
+interface ProjectCardProps {
+  project: Project;
+  number: number;
+}
 
 const badgeIcons: Record<string, string> = {
   shell: '/img/portfolio/projects/badges/shell.svg',
   yaml: '/img/portfolio/projects/badges/yaml.svg',
 };
 
-export default function ProjectCard({project, number}: Props): React.JSX.Element {
+export default function ProjectCard({project, number}: ProjectCardProps): React.JSX.Element {
   const imageUrl = useBaseUrl(project.image);
   const iconBaseUrl = useBaseUrl('/');
   const titleId = `project-${project.id}-title`;
