@@ -1,15 +1,20 @@
-# DevSecOps Learning Journal
+# DevSecOps Portfolio and Learning Journal
 
-I use this Docusaurus site to document my DevSecOps training projects. Each report explains the task, my approach, the results, and what I learned.
+## Description
 
-[Visit the learning journal](https://philippklinger.github.io/my-dso-blog/)
+This Docusaurus site presents my DevSecOps training projects. The portfolio homepage introduces my skills, highlights selected projects, and provides contact links. The documentation contains project reports describing the task, my approach, the result, and supporting evidence.
+
+[Visit the site](https://philippklinger.github.io/my-dso-blog/)
 
 ## Table of Contents
 
+- [Description](#description)
 - [Projects](#projects)
 - [Quickstart](#quickstart)
+  - [How to Start](#how-to-start)
 - [Usage](#usage)
   - [Configuration](#configuration)
+  - [Customizing Content](#customizing-content)
   - [Validation](#validation)
   - [Deployment](#deployment)
 
@@ -32,7 +37,9 @@ I use this Docusaurus site to document my DevSecOps training projects. Each repo
 
 Requirements: Git, Node.js 24 or newer, and npm.
 
-Clone the repository, install dependencies, and start the documentation site:
+### How to Start
+
+Clone the repository, install dependencies, and start the site:
 
 ```bash
 git clone https://github.com/PhilippKlinger/my-dso-blog.git
@@ -41,15 +48,25 @@ npm ci
 npm start
 ```
 
-Open the local URL printed in the terminal. The development server reloads the site when you edit its content.
+Open the local URL printed in the terminal. The development server reloads the site as you edit it.
 
 ## Usage
 
 ### Configuration
 
-The defaults in `docusaurus.config.ts` work locally. To override the public site URLs and repository settings, copy `example.env` to `.env` and adjust the values. Keep `.env` untracked and never commit secrets.
+The defaults in `docusaurus.config.ts` work locally. To use another public URL or repository, copy `example.env` to `.env` and adjust its values:
 
-Restart the development server after changing these settings. For published pages, the values must be available when the site is built.
+- `DEPLOYMENT_URL` and `BASE_URL` set the site's domain and path.
+- `GITHUB_ORG`, `GITHUB_PROJECT`, and `DEPLOYMENT_BRANCH` identify the GitHub Pages repository and branch.
+- `GIT_REPOSITORY_URL` sets the repository links displayed on the site.
+
+Keep `.env` untracked. These values are used during the build, so restart the development server after changing them.
+
+### Customizing Content
+
+The homepage in `src/pages/index.tsx` assembles the portfolio sections from `src/components/`. Edit `src/data/skills.ts` and `src/data/projects.ts` to change their cards. Project reports live under `docs/projects/`, with their navigation configured in `sidebars.ts`. `src/theme/Navbar/` selects the portfolio navigation on the homepage and the standard navigation elsewhere.
+
+Component CSS Modules and `src/css/portfolio.module.css` control the portfolio design. Images and icons live under `static/img/`; the local font is in `src/assets/fonts/`.
 
 ### Validation
 
@@ -65,26 +82,4 @@ The build writes the static site to `build/`. Open the preview URL printed in th
 
 ### Deployment
 
-GitHub Actions builds pull requests targeting `main` and deploys the site to GitHub Pages after a push to `main`, with Pages configured to use **GitHub Actions**. Feature-branch changes reach the published site after they are merged into `main`.
-
-<details>
-<summary>Repository reference</summary>
-
-| Files | Purpose |
-| --- | --- |
-| `package.json`, `package-lock.json` | npm commands and dependency versions. |
-| `docusaurus.config.ts`, `example.env` | Site configuration and optional environment overrides. |
-| `sidebars.ts`, `docs/projects/_category_.yaml` | Documentation navigation. |
-| `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md`, `docs/projects/v-server-setup.md`, `docs/projects/baby-tools-shop.md`, `docs/projects/minecraft-server.md`, `docs/projects/wordpress-multicontainer-setup.md`, `docs/projects/conduit-container.md`, `docs/projects/conduit-deployment.md`, `docs/projects/truck-signs-api.md`, `docs/projects/Juice Shop Master/` | Project overview and reports for the Docusaurus Blog, seven DevSecOps projects, and Juice Shop Master. |
-| `src/pages/`, `src/css/custom.css` | Homepage and shared styling. |
-| `src/pages/imprint/` | English legal notice with provider and contact information; the `/imprint/` route follows the configured base URL. |
-| `src/components/portfolio-footer/`, `static/img/portfolio/footer/` | Portfolio footer and back-to-top arrow; copyright and reference links reuse the theme configuration. |
-| `src/components/GithubLinkAdmonition/`, `static/img/github.svg` | Unused template component and icon. |
-| `static/.nojekyll` | Static GitHub Pages marker. |
-| `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |
-| `.github/workflows/` | Build and deployment automation. |
-| `.gitignore`, `.dockerignore` | Git and Docker exclusions. |
-| `Dockerfile` | Legacy container build, unused by GitHub Pages. |
-| `LICENSE` | Repository license. |
-
-</details>
+The workflows under `.github/workflows/` build pull requests targeting `main` and deploy the site to GitHub Pages after a push to `main`, with Pages configured to use **GitHub Actions**. Feature-branch changes reach the published site after they are merged into `main`.
