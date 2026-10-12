@@ -77,6 +77,8 @@ GitHub Actions builds pull requests targeting `main` and deploys the site to Git
 | `sidebars.ts`, `docs/projects/_category_.yaml` | Documentation navigation. |
 | `docs/projects/overview.mdx`, `docs/projects/docusaurus-blog.md`, `docs/projects/v-server-setup.md`, `docs/projects/baby-tools-shop.md`, `docs/projects/minecraft-server.md`, `docs/projects/wordpress-multicontainer-setup.md`, `docs/projects/conduit-container.md`, `docs/projects/conduit-deployment.md`, `docs/projects/truck-signs-api.md`, `docs/projects/Juice Shop Master/` | Project overview and reports for the Docusaurus Blog, seven DevSecOps projects, and Juice Shop Master. |
 | `src/pages/`, `src/css/custom.css` | Homepage and shared styling. |
+| `src/pages/imprint/` | English legal notice with provider and contact information; the `/imprint/` route follows the configured base URL. |
+| `src/components/portfolio-footer/`, `static/img/portfolio/footer/` | Portfolio footer and back-to-top arrow; copyright and reference links reuse the theme configuration. |
 | `src/components/GithubLinkAdmonition/`, `static/img/github.svg` | Unused template component and icon. |
 | `static/.nojekyll` | Static GitHub Pages marker. |
 | `babel.config.js`, `tsconfig.json` | Docusaurus build and TypeScript configuration. |
