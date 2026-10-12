@@ -4,6 +4,7 @@ import HeroSection from '@site/src/components/hero-section';
 import SkillsSection from '@site/src/components/skills-section';
 import ProjectHighlights from '@site/src/components/project-highlights';
 import ContactSection from '@site/src/components/contact-section';
+import PortfolioFooter from '@site/src/components/portfolio-footer';
 
 import styles from '@site/src/css/portfolio.module.css';
 
@@ -11,6 +12,7 @@ export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
+      noFooter
       title={siteConfig.title}
       description="Philipp Klinger's DevSecOps portfolio documenting projects, secure delivery practices, and lessons learned.">
       <main className={styles.portfolio}>
@@ -19,6 +21,7 @@ export default function Home(): React.JSX.Element {
         <ProjectHighlights />
         <ContactSection />
       </main>
+      <PortfolioFooter />
     </Layout>
   );
 }
