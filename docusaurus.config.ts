@@ -116,11 +116,15 @@ const config: Config = {
               label: 'Template',
               href: 'https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template',
             },
+            {
+              label: 'Legal Notice',
+              to: '/imprint/',
+            },
             ...(blogEnabled ? [{to: '/blog', label: 'Blog'}] : []),
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Philipp Klinger. extended from the developer-akademie-starter`,
+      copyright: `Copyright © ${new Date().getFullYear()} Philipp Klinger`,
     },
     prism: {
       theme: prismThemes.github,
