@@ -1,5 +1,4 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Heading from '@theme/Heading';
 
 import styles from './hero-section.module.css';
 
@@ -13,9 +12,9 @@ export default function HeroSection(): React.JSX.Element {
           <p className={styles.greeting}>
             Hey there. <span aria-hidden="true">👋</span> I am
           </p>
-          <Heading as="h1" id="hero-title" className={styles.name}>
+          <h1 id="hero-title" className={styles.name}>
             Philipp Klinger
-          </Heading>
+          </h1>
           <p className={styles.role}>
             Full-Stack Developer &amp; DevSecOps Enthusiast
           </p>
