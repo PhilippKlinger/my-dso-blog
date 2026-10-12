@@ -14,6 +14,7 @@
   --portfolio-color-background: #262e34;
   --portfolio-color-surface: #313d47;
   --portfolio-color-muted: #738398;
+  --portfolio-color-project-surface: #2f4563;
   --portfolio-font-family: 'Portfolio Quicksand', sans-serif;
   --portfolio-weight-regular: 400;
   --portfolio-weight-medium: 500;
@@ -28,11 +29,15 @@
   --portfolio-text-heading: 4rem;
   --portfolio-text-label: 1.375rem;
   --portfolio-text-detail: 1.125rem;
+  --portfolio-text-project-heading: 4rem;
+  --portfolio-text-project-title: 2.5rem;
+  --portfolio-text-tag: 0.75rem;
   --portfolio-anchor-offset: 7rem;
   --portfolio-leading: 1.2;
   --portfolio-leading-name: 1.2;
   --portfolio-weight-body: var(--portfolio-weight-semibold);
   --portfolio-space-xs: 0.5rem;
+  --portfolio-space-2xs: 0.25rem;
   --portfolio-space-sm: 1rem;
   --portfolio-space-md: 1.5rem;
   --portfolio-space-lg: 2rem;
@@ -66,6 +71,8 @@
     --portfolio-text-heading: 2rem;
     --portfolio-text-label: 1rem;
     --portfolio-text-detail: 0.875rem;
+    --portfolio-text-project-heading: 3rem;
+    --portfolio-text-project-title: 2rem;
     --portfolio-anchor-offset: 5rem;
     --portfolio-leading-name: 1;
     --portfolio-weight-body: var(--portfolio-weight-medium);

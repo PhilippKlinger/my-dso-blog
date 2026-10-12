@@ -1,0 +1,129 @@
+.section {
+  padding: 5rem var(--portfolio-page-gutter) var(--portfolio-section-space);
+  background: var(--portfolio-color-accent);
+}
+
+.content {
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+}
+
+.heading {
+  margin: 0 0 var(--portfolio-space-xl);
+  font-size: var(--portfolio-text-project-heading);
+  font-weight: var(--portfolio-weight-bold);
+  line-height: var(--portfolio-leading);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  grid-template-areas: 'selection cards' 'more cards';
+  grid-template-rows: max-content 1fr;
+  column-gap: var(--portfolio-space-lg);
+  row-gap: var(--portfolio-space-md);
+}
+
+.selection {
+  grid-area: selection;
+  display: flex;
+  flex-direction: column;
+  gap: var(--portfolio-space-md);
+  margin: 0;
+  padding-left: var(--portfolio-space-lg);
+  font-size: var(--portfolio-text-navigation);
+}
+
+.selection button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--portfolio-color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.selection button[aria-pressed='true'] {
+  color: var(--portfolio-color-background);
+  font-weight: var(--portfolio-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.selection button:hover {
+  text-decoration: underline;
+}
+
+.selection button:focus-visible,
+.moreProjects a:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+.cards {
+  grid-area: cards;
+  min-width: 0;
+}
+
+.project[data-selected='false'] {
+  display: none;
+}
+
+.moreProjects {
+  grid-area: more;
+  font-size: var(--portfolio-text-body);
+}
+
+.moreProjects a {
+  color: var(--portfolio-color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.moreText {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .section {
+    padding: 1.25rem 0 var(--portfolio-section-space);
+  }
+
+  .heading {
+    padding-inline: var(--portfolio-page-gutter);
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'cards' 'more';
+    row-gap: var(--portfolio-space-xl);
+  }
+
+  .selection {
+    display: none;
+  }
+
+  .cards {
+    display: grid;
+    gap: var(--portfolio-space-xl);
+    margin-inline: calc(var(--portfolio-page-gutter) / 2);
+  }
+
+  .project[data-selected] {
+    display: block;
+  }
+
+  .project[data-selected]:nth-child(n + 4) {
+    display: none;
+  }
+
+  .moreProjects {
+    margin-inline: var(--portfolio-page-gutter);
+  }
+
+  .moreText {
+    display: block;
+    margin: 0 0 var(--portfolio-space-md);
+  }
+}
