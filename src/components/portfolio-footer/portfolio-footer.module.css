@@ -1,0 +1,92 @@
+.footer {
+  padding: 7.5rem var(--portfolio-page-gutter);
+  background: var(--portfolio-color-background);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  margin-bottom: 5rem;
+  border-radius: var(--portfolio-radius-pill);
+  color: var(--portfolio-color-text);
+}
+
+.backToTop img {
+  display: block;
+  width: 40px;
+  height: 90px;
+  border-radius: var(--portfolio-radius-pill);
+}
+
+.backToTop:hover img {
+  background: rgb(255 255 255 / 16%);
+}
+
+.information {
+  display: grid;
+  justify-items: center;
+  gap: var(--portfolio-space-sm);
+  width: 100%;
+  text-align: center;
+}
+
+.copyright {
+  margin: 0;
+  font-size: var(--portfolio-text-footer);
+  overflow-wrap: anywhere;
+}
+
+.legalNotice {
+  font-size: var(--portfolio-text-footer-link);
+}
+
+.references {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--portfolio-space-xs) var(--portfolio-space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--portfolio-text-footer-link);
+}
+
+.legalNotice,
+.references a {
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
+.legalNotice:hover,
+.references a:hover {
+  color: var(--portfolio-color-paper);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.backToTop:focus-visible,
+.legalNotice:focus-visible,
+.references a:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+@media (max-width: 996px) {
+  .footer {
+    padding-block: 5rem var(--portfolio-space-xl);
+  }
+
+  .backToTop img {
+    height: 73px;
+  }
+}
