@@ -35,6 +35,7 @@
 }
 
 .selection button {
+  display: block;
   padding: 0;
   border: 0;
   background: transparent;
@@ -120,6 +121,12 @@
 
   .moreProjects {
     margin-inline: var(--portfolio-page-gutter);
+  }
+
+  .moreProjects a {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
   }
 
   .moreText {

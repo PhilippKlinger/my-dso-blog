@@ -112,10 +112,15 @@
   border-color: var(--portfolio-color-text);
 }
 
-.documentation:hover,
+.documentation:hover {
+  background: var(--portfolio-color-accent-hover);
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
 .github:hover {
-  background: var(--portfolio-color-paper);
-  color: var(--portfolio-color-action-hover);
+  background: var(--portfolio-color-outline-hover);
+  color: var(--portfolio-color-text);
   text-decoration: none;
 }
 

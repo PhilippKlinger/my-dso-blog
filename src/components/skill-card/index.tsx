@@ -20,9 +20,12 @@ export default function SkillCard({skill}: SkillCardProps): React.JSX.Element {
         <img src={useBaseUrl(skill.icon)} alt="" width={80} height={80} loading="lazy" />
         <h3 id={labelId} className={styles.name}>{skill.name}</h3>
       </div>
-      <ul id={detailsId} className={styles.details}>
-        {skill.details.map(detail => <li key={detail}>{detail}</li>)}
-      </ul>
+      <div className={styles.details}>
+        <p className={styles.detailHeading}>How I used this skill</p>
+        <ul id={detailsId}>
+          {skill.details.map(detail => <li key={detail}>{detail}</li>)}
+        </ul>
+      </div>
     </article>
   );
 }

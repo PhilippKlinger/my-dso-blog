@@ -8,11 +8,14 @@
 
 .portfolio {
   --portfolio-color-accent: #266ad9;
+  --portfolio-color-accent-hover: #5696ff;
   --portfolio-color-text: #fff;
   --portfolio-color-paper: #f8f5ec;
-  --portfolio-color-action-hover: #2f4563;
+  --portfolio-color-inverse-hover: rgb(255 255 255 / 85%);
+  --portfolio-color-outline-hover: rgb(255 255 255 / 16%);
   --portfolio-color-background: #262e34;
   --portfolio-color-surface: #313d47;
+  --portfolio-color-surface-hover: rgb(121 184 255 / 50%);
   --portfolio-color-muted: #738398;
   --portfolio-color-project-surface: #2f4563;
   --portfolio-font-family: 'Portfolio Quicksand', sans-serif;

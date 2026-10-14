@@ -81,8 +81,8 @@
 }
 
 .contactLink:hover {
-  background: var(--portfolio-color-paper);
-  color: var(--portfolio-color-action-hover);
+  background: var(--portfolio-color-inverse-hover);
+  color: var(--portfolio-color-accent);
   text-decoration: none;
 }
 
