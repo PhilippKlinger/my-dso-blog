@@ -10,7 +10,7 @@ export default function HeroSection(): React.JSX.Element {
       <div className={styles.content}>
         <div className={styles.introduction}>
           <p className={styles.greeting}>
-            Hey there. <span aria-hidden="true">👋</span> I am
+            Hey there! <span aria-hidden="true">👋</span> I’m
           </p>
           <h1 id="hero-title" className={styles.name}>
             Philipp Klinger
@@ -30,9 +30,9 @@ export default function HeroSection(): React.JSX.Element {
         <p className={styles.description}>
           I build web applications with TypeScript, Angular, Python and Django.
           My DevSecOps projects bring that experience together with Linux,
-          containers, CI/CD and application security. I enjoy solving practical
-          problems and making software easier to maintain. Here, I share my
-          projects and the decisions behind them.
+          containers, CI/CD and application security. Here, I share how I built
+          and deployed my projects, the problems I worked through and the
+          decisions behind them.
         </p>
         <a className={styles.contactLink} href="mailto:hello@philipp-klinger.com">
           Contact me

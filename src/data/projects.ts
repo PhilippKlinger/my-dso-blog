@@ -13,7 +13,7 @@ export const projects: readonly Project[] = [
   {
     id: 'conduit-deployment',
     title: 'Conduit Deployment',
-    description: 'Automated delivery for an existing Angular and Django application. The pipeline builds versioned container images in GitHub Actions and deploys selected releases to a staging server with verified SSH access and service checks.',
+    description: 'I added automated delivery to an existing Angular and Django application. The pipeline builds versioned container images in GitHub Actions and deploys selected releases to a staging server with verified SSH access and service checks.',
     image: '/img/portfolio/projects/conduit-deployment.svg',
     imageAlt: 'Conduit deployment illustration with a rocket over the application',
     skillIds: ['yaml', 'containers', 'ci-cd', 'security'],
@@ -33,7 +33,7 @@ export const projects: readonly Project[] = [
   {
     id: 'juice-shop',
     title: 'Juice Shop Master',
-    description: 'Three security challenges investigated in my own OWASP Juice Shop lab. Using Burp Suite, I explored SQL injection, exposed monitoring rules and unsigned JWTs, documenting the findings and their security implications.',
+    description: 'I investigated three security challenges in my own OWASP Juice Shop lab. Using Burp Suite, I explored SQL injection, exposed monitoring rules and unsigned JWTs, and documented what I found and the security implications.',
     image: '/img/portfolio/projects/juice-shop.png',
     imageAlt: 'Design reference screenshot of the OWASP Juice Shop product overview',
     skillIds: ['security'],
@@ -43,7 +43,7 @@ export const projects: readonly Project[] = [
   {
     id: 'minecraft',
     title: 'Minecraft Server',
-    description: 'A Minecraft Java server with Fabric mods, packaged for local or VPS use. Built with Docker and Compose, featuring validated startup settings, a non-root process and persistent storage for worlds, configuration and mods.',
+    description: 'I packaged a Minecraft Java server with Fabric mods for local or VPS use. The Docker and Compose setup validates startup settings, runs the server as a non-root user and keeps worlds, configuration and mods in persistent storage.',
     image: '/img/portfolio/projects/minecraft.svg',
     imageAlt: 'Minecraft illustration with the game title and a creeper',
     skillIds: ['shell', 'yaml', 'containers', 'security'],
@@ -53,7 +53,7 @@ export const projects: readonly Project[] = [
   {
     id: 'wordpress',
     title: 'WordPress',
-    description: 'WordPress and MariaDB running as separate Docker Compose services. The setup connects the application to a healthchecked database and keeps posts, uploads and database data in persistent volumes, with credentials supplied through environment variables.',
+    description: 'I set up WordPress and MariaDB as separate Docker Compose services. The setup checks database health and keeps posts, uploads and database data in persistent volumes. Credentials come from environment variables.',
     image: '/img/portfolio/projects/wordpress.svg',
     imageAlt: 'WordPress illustration with its logo and a website on a laptop',
     skillIds: ['yaml', 'containers'],

@@ -12,12 +12,10 @@ export default function ContactSection(): React.JSX.Element {
           Contact me
         </h2>
         <p className={styles.description}>
-          Interested in my work or have a project in mind? Feel free to get in
-          touch. My experience combines full-stack development with practical
-          DevSecOps projects, from containers and CI/CD to application security.
-          I’d be happy to discuss your ideas and how I could contribute.
+          Have a question about one of my projects or an opportunity in mind?
+          I’d be happy to talk about the work and how I could contribute.
         </p>
-        <p className={styles.invitation}>Looking forward to hearing from you!</p>
+        <p className={styles.invitation}>You can reach me by email or on LinkedIn.</p>
         <ul className={styles.links} aria-label="Contact options">
           <li>
             <a className={styles.link} href="mailto:hello@philipp-klinger.com">
