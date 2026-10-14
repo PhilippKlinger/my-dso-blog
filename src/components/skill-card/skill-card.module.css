@@ -1,0 +1,118 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: var(--portfolio-space-md);
+  min-height: 12.5rem;
+  padding: var(--portfolio-space-md);
+  border-radius: var(--portfolio-radius-card);
+  background: var(--portfolio-color-surface);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+.identity {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--portfolio-space-xs);
+  text-align: center;
+}
+
+.identity img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.name {
+  max-width: 12rem;
+  margin: 0;
+  font-size: var(--portfolio-text-label);
+  font-weight: var(--portfolio-weight-regular);
+  line-height: var(--portfolio-leading);
+  overflow-wrap: anywhere;
+}
+
+.details {
+  font-size: var(--portfolio-text-detail);
+  visibility: hidden;
+}
+
+.details ul {
+  margin: 0;
+  padding-left: var(--portfolio-space-md);
+}
+
+.detailHeading {
+  margin: 0 0 var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-navigation);
+  font-weight: var(--portfolio-weight-regular);
+}
+
+@media (min-width: 997px) {
+  .card:hover,
+  .card:focus-within {
+    background: var(--portfolio-color-surface-hover);
+  }
+
+  .card:hover .identity,
+  .card:focus-within .identity {
+    visibility: hidden;
+  }
+
+  .card:hover .details,
+  .card:focus-within .details {
+    visibility: visible;
+  }
+}
+
+@media (max-width: 996px) {
+  .card {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--portfolio-space-sm);
+    min-height: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .identity {
+    position: static;
+  }
+
+  .identity img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .details {
+    visibility: visible;
+  }
+
+  .detailHeading {
+    display: none;
+  }
+}
+
+/* At narrow widths, give the descriptions a full row instead of squeezing them. */
+@media (max-width: 360px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--portfolio-space-xs);
+  }
+
+  .identity {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+  }
+}

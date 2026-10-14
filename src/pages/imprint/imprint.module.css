@@ -1,0 +1,59 @@
+.page {
+  background: var(--portfolio-color-background);
+}
+
+.content {
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+  padding: var(--portfolio-section-space) var(--portfolio-page-gutter);
+}
+
+.content h1 {
+  margin: 0 0 var(--portfolio-space-xl);
+  font-size: var(--portfolio-text-heading);
+  font-weight: var(--portfolio-weight-bold);
+  line-height: var(--portfolio-leading);
+}
+
+.content section {
+  margin-bottom: var(--portfolio-space-xl);
+}
+
+.content h2 {
+  margin: 0 0 var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-intro);
+  font-weight: var(--portfolio-weight-semibold);
+}
+
+.content p,
+.address {
+  margin: 0 0 var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-detail);
+  line-height: 1.5;
+}
+
+.address {
+  font-style: normal;
+}
+
+.content a {
+  color: var(--portfolio-color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.content a:hover {
+  color: var(--portfolio-color-paper);
+}
+
+.content a:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-detail);
+}

@@ -1,0 +1,142 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ifm-z-index-fixed);
+  background: var(--portfolio-color-accent);
+  padding: 3.125rem var(--portfolio-page-gutter) 1.875rem;
+  transition: transform 160ms ease;
+}
+
+.header[data-hidden='true'] {
+  transform: translateY(-100%);
+}
+
+.header:focus-within {
+  transform: none;
+}
+
+.content {
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(var(--portfolio-space-xl), 5vw, 4.25rem);
+  row-gap: var(--portfolio-space-sm);
+  font-size: var(--portfolio-text-navigation);
+  font-weight: var(--portfolio-weight-semibold);
+}
+
+.navigation a {
+  width: fit-content;
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.navigation a:focus-visible,
+.toggle:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+.toggle {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .header {
+    padding: 0 var(--portfolio-page-gutter);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    min-width: 44px;
+    min-height: 44px;
+    margin-block: 14.5px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--portfolio-color-text);
+    cursor: pointer;
+  }
+
+  .menuIcon,
+  .menuIcon::before,
+  .menuIcon::after {
+    width: 30px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .menuIcon {
+    position: relative;
+  }
+
+  .menuIcon::before,
+  .menuIcon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -9px;
+  }
+
+  .menuIcon::after {
+    top: 9px;
+  }
+
+  .toggle[aria-expanded='true'] .menuIcon {
+    background: transparent;
+  }
+
+  .toggle[aria-expanded='true'] .menuIcon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .toggle[aria-expanded='true'] .menuIcon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    background: var(--portfolio-color-accent);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: var(--portfolio-space-md);
+    padding: var(--portfolio-space-xs) var(--portfolio-page-gutter) var(--portfolio-space-xl);
+    max-height: calc(100dvh - 73px);
+    overflow-y: auto;
+  }
+
+  /* Preserve focus until the breakpoint handler moves it to the menu button. */
+  .navigation[data-open='true'],
+  .navigation:focus-within {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
+}

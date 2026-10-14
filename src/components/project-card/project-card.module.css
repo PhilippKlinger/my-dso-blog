@@ -1,0 +1,148 @@
+.card {
+  padding: var(--portfolio-space-lg);
+  border-radius: var(--portfolio-radius-card);
+  background: var(--portfolio-color-project-surface);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--portfolio-space-sm);
+  margin-bottom: var(--portfolio-space-lg);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--portfolio-text-project-title);
+  font-weight: var(--portfolio-weight-bold);
+  line-height: var(--portfolio-leading);
+  overflow-wrap: anywhere;
+}
+
+.number {
+  display: none;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--portfolio-space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--portfolio-space-2xs);
+  padding: var(--portfolio-space-2xs);
+  border-radius: var(--portfolio-space-xs);
+  background: var(--portfolio-color-text);
+  color: var(--portfolio-color-background);
+  font-size: var(--portfolio-text-tag);
+}
+
+.badge img {
+  width: 1.875rem;
+  height: 1.875rem;
+  object-fit: contain;
+}
+
+.badge span {
+  max-width: 6rem;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: var(--portfolio-space-lg);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 355 / 240;
+  border-radius: var(--portfolio-radius-card);
+  object-fit: contain;
+  background: var(--portfolio-color-background);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--portfolio-space-lg);
+}
+
+.description {
+  margin: 0;
+  font-size: var(--portfolio-text-body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--portfolio-space-sm);
+}
+
+.documentation,
+.github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--portfolio-action-padding);
+  border: 2px solid transparent;
+  border-radius: var(--portfolio-radius-pill);
+  color: var(--portfolio-color-text);
+  font-size: var(--portfolio-text-action);
+  font-weight: var(--portfolio-weight-semibold);
+  text-decoration: none;
+}
+
+.documentation {
+  background: var(--portfolio-color-accent);
+}
+
+.github {
+  border-color: var(--portfolio-color-text);
+}
+
+.documentation:hover {
+  background: var(--portfolio-color-accent-hover);
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
+.github:hover {
+  background: var(--portfolio-color-outline-hover);
+  color: var(--portfolio-color-text);
+  text-decoration: none;
+}
+
+.actions a:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+@media (max-width: 996px) {
+  .card {
+    padding: var(--portfolio-space-md);
+  }
+
+  .number {
+    display: inline;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

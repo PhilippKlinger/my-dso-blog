@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Portfolio Quicksand';
+  src: url('../assets/fonts/quicksand-variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+.portfolio {
+  --portfolio-color-accent: #266ad9;
+  --portfolio-color-accent-hover: #5696ff;
+  --portfolio-color-text: #fff;
+  --portfolio-color-paper: #f8f5ec;
+  --portfolio-color-inverse-hover: rgb(255 255 255 / 85%);
+  --portfolio-color-outline-hover: rgb(255 255 255 / 16%);
+  --portfolio-color-background: #262e34;
+  --portfolio-color-surface: #313d47;
+  --portfolio-color-surface-hover: rgb(121 184 255 / 50%);
+  --portfolio-color-muted: #738398;
+  --portfolio-color-project-surface: #2f4563;
+  --portfolio-font-family: 'Portfolio Quicksand', sans-serif;
+  --portfolio-weight-regular: 400;
+  --portfolio-weight-medium: 500;
+  --portfolio-weight-semibold: 600;
+  --portfolio-weight-bold: 700;
+  /* Anchor the fluid name size at the 1440px design; rem preserves text scaling. */
+  --portfolio-text-name: clamp(3.5rem, calc(5.5rem + 6vw - 86.4px), 5.5rem);
+  --portfolio-text-intro: 2rem;
+  --portfolio-text-body: 1.375rem;
+  --portfolio-text-action: 1.25rem;
+  --portfolio-text-navigation: 1.5rem;
+  --portfolio-text-heading: 4rem;
+  --portfolio-text-contact-heading: 3.25rem;
+  --portfolio-text-label: 1.375rem;
+  --portfolio-text-detail: 1.125rem;
+  --portfolio-text-project-heading: 4rem;
+  --portfolio-text-project-title: 2.5rem;
+  --portfolio-text-tag: 0.75rem;
+  --portfolio-text-footer: 0.9375rem;
+  --portfolio-text-footer-link: 1rem;
+  --portfolio-anchor-offset: 7rem;
+  --portfolio-leading: 1.2;
+  --portfolio-leading-name: 1.2;
+  --portfolio-weight-body: var(--portfolio-weight-semibold);
+  --portfolio-space-xs: 0.5rem;
+  --portfolio-space-2xs: 0.25rem;
+  --portfolio-space-sm: 1rem;
+  --portfolio-space-md: 1.5rem;
+  --portfolio-space-lg: 2rem;
+  --portfolio-space-xl: 2.5rem;
+  --portfolio-section-space: 4.5rem;
+  --portfolio-layout-gap: var(--portfolio-space-xl);
+  --portfolio-page-gutter: var(--portfolio-space-lg);
+  --portfolio-content-width: 75rem;
+  --portfolio-radius-card: 1.875rem;
+  --portfolio-radius-pill: 999px;
+  --portfolio-action-padding: 0.875rem 1.25rem;
+  --ifm-heading-font-family: var(--portfolio-font-family);
+
+  font-family: var(--portfolio-font-family);
+  font-weight: var(--portfolio-weight-regular);
+  line-height: var(--portfolio-leading);
+  color: var(--portfolio-color-text);
+}
+
+.portfolio :global(section[id]) {
+  scroll-margin-top: var(--portfolio-anchor-offset);
+}
+
+@media (max-width: 996px) {
+  .portfolio {
+    --portfolio-text-name: 3rem;
+    --portfolio-text-intro: 1.5rem;
+    --portfolio-text-body: 1rem;
+    --portfolio-text-action: 1rem;
+    --portfolio-text-navigation: 1.375rem;
+    --portfolio-text-heading: 2rem;
+    --portfolio-text-contact-heading: 1.75rem;
+    --portfolio-text-label: 1rem;
+    --portfolio-text-detail: 0.875rem;
+    --portfolio-text-project-heading: 3rem;
+    --portfolio-text-project-title: 2rem;
+    --portfolio-text-footer: 0.75rem;
+    --portfolio-anchor-offset: 5rem;
+    --portfolio-leading-name: 1;
+    --portfolio-weight-body: var(--portfolio-weight-medium);
+    --portfolio-page-gutter: 1.625rem;
+    --portfolio-section-space: var(--portfolio-space-xl);
+    --portfolio-layout-gap: var(--portfolio-space-lg);
+  }
+}

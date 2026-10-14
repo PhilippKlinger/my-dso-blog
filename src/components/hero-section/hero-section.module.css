@@ -1,0 +1,123 @@
+.hero {
+  background: var(--portfolio-color-accent);
+  padding: 3.75rem var(--portfolio-page-gutter) var(--portfolio-section-space);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-areas:
+    'introduction portrait'
+    'description portrait'
+    'contact portrait';
+  column-gap: clamp(var(--portfolio-space-xl), calc(12.5vw - 5.375rem), 5.875rem);
+  row-gap: var(--portfolio-layout-gap);
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+  align-items: start;
+}
+
+.introduction {
+  grid-area: introduction;
+  display: grid;
+  gap: var(--portfolio-space-sm);
+}
+
+.greeting,
+.name,
+.role,
+.description {
+  margin: 0;
+}
+
+.greeting {
+  font-size: var(--portfolio-text-intro);
+}
+
+.name {
+  font-size: var(--portfolio-text-name);
+  font-weight: var(--portfolio-weight-bold);
+  line-height: var(--portfolio-leading-name);
+  overflow-wrap: anywhere;
+}
+
+.role {
+  font-size: var(--portfolio-text-intro);
+  font-weight: var(--portfolio-weight-medium);
+}
+
+.portrait {
+  grid-area: portrait;
+  align-self: center;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 442 / 479;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--portfolio-radius-card);
+  background: var(--portfolio-color-paper);
+}
+
+.description {
+  grid-area: description;
+  font-size: var(--portfolio-text-body);
+  font-weight: var(--portfolio-weight-body);
+}
+
+.contactLink {
+  grid-area: contact;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--portfolio-action-padding);
+  border-radius: var(--portfolio-radius-pill);
+  background: var(--portfolio-color-text);
+  color: var(--portfolio-color-accent);
+  font-size: var(--portfolio-text-action);
+  font-weight: var(--portfolio-weight-semibold);
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  background: var(--portfolio-color-inverse-hover);
+  color: var(--portfolio-color-accent);
+  text-decoration: none;
+}
+
+.contactLink:focus-visible {
+  outline: 3px solid var(--portfolio-color-text);
+  outline-offset: 5px;
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding-top: var(--portfolio-space-md);
+  }
+
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'introduction' 'portrait' 'description' 'contact';
+    max-width: 440px;
+  }
+
+  .introduction {
+    gap: var(--portfolio-space-xs);
+  }
+
+  .portrait {
+    justify-self: center;
+    max-width: 313px;
+    aspect-ratio: 313 / 300;
+  }
+
+  .description {
+    margin-top: var(--portfolio-space-sm);
+  }
+
+  .contactLink {
+    justify-self: center;
+    margin-top: var(--portfolio-space-xs);
+  }
+}
