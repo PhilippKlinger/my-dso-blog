@@ -15,6 +15,7 @@ This Docusaurus site presents my DevSecOps training projects. The portfolio home
 - [Usage](#usage)
   - [Configuration](#configuration)
   - [Customizing Content](#customizing-content)
+  - [Code Documentation](#code-documentation)
   - [Validation](#validation)
   - [Deployment](#deployment)
 
@@ -45,6 +46,7 @@ Clone the repository, install dependencies, and start the site:
 git clone https://github.com/PhilippKlinger/my-dso-blog.git
 cd my-dso-blog
 npm ci
+npm run docs:install
 npm start
 ```
 
@@ -67,6 +69,40 @@ Keep `.env` untracked. These values are used during the build, so restart the de
 The homepage in `src/pages/index.tsx` assembles the portfolio sections from `src/components/`. Edit `src/data/skills.ts` and `src/data/projects.ts` to change their cards. Project reports live under `docs/projects/`, with their navigation configured in `sidebars.ts`. `src/theme/Navbar/` selects the portfolio navigation on the homepage and the standard navigation elsewhere.
 
 Component CSS Modules and `src/css/portfolio.module.css` control the portfolio design. Images and icons live under `static/img/`; the local font is in `src/assets/fonts/`.
+
+### Code Documentation
+
+The [code documentation guide](docs/code-reference.mdx) links to the generated
+reference for the portfolio's own components, pages, props and data models.
+TSDoc comments explain behaviour and data requirements; TypeScript supplies the
+types. Unchanged template helpers and third-party code are excluded.
+
+`tools/code-docs/package.json` and its lockfile pin TypeDoc and a compatible
+TypeScript 6 compiler separately from the application's TypeScript 7 compiler.
+`tools/code-docs/typedoc.json` selects the documented files and treats documentation
+warnings as errors. Install these tools with `npm run docs:install` after cloning
+or after their lockfile changes.
+
+`tools/code-docs/component-names.mjs` makes TypeDoc display declared function names
+instead of `default` in headings, signatures, navigation and search results.
+The application's default exports stay in place.
+
+Both `npm start` and `npm run build` generate the reference first. To refresh it
+while the development server is already running, use:
+
+```bash
+npm run docs:build
+```
+
+Open `/my-dso-blog/code-reference/index.html` on the local server, or follow
+**Code Reference** in the documentation sidebar. If you change `BASE_URL`, use
+that prefix instead. Generated files under `static/code-reference/` are ignored
+by Git and copied into the production build.
+
+Use `npm start` to browse the reference locally. The Docusaurus 3.10.2 production
+preview (`npm run serve`) redirects explicit `.html` links without preserving
+the repository prefix. This affects the reference's navigation in that preview;
+the generated files keep their normal HTML URLs for GitHub Pages.
 
 ### Validation
 
