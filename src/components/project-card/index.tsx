@@ -4,8 +4,11 @@ import type {Project} from '@site/src/data/projects';
 import {skills} from '@site/src/data/skills';
 import styles from './project-card.module.css';
 
-interface ProjectCardProps {
+/** Content and display position for a project highlight. */
+export interface ProjectCardProps {
+  /** Project content, asset paths and link targets. */
   project: Project;
+  /** One-based display position, shown before the title on mobile. */
   number: number;
 }
 
@@ -14,6 +17,17 @@ const badgeIcons: Record<string, string> = {
   yaml: '/img/portfolio/projects/badges/yaml.svg',
 };
 
+/**
+ * Displays a project with its skill badges and documentation/repository links.
+ *
+ * @remarks
+ * Badges follow the order of the shared skills list, using matching skill IDs.
+ * Shell and YAML use dark icon variants on the light badge background.
+ * Asset and documentation paths are resolved against the site's base URL.
+ * Both project links open in a new tab.
+ *
+ * @param props - Project content and its one-based display position.
+ */
 export default function ProjectCard({project, number}: ProjectCardProps): React.JSX.Element {
   const imageUrl = useBaseUrl(project.image);
   const iconBaseUrl = useBaseUrl('/');

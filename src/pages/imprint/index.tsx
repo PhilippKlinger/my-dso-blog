@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import portfolioStyles from '@site/src/css/portfolio.module.css';
 import styles from './imprint.module.css';
 
+/** Displays the public legal notice with the standard Docusaurus navigation. */
 export default function Imprint(): React.JSX.Element {
   return (
     <Layout

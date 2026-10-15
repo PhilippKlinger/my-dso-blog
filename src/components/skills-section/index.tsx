@@ -7,6 +7,15 @@ import styles from './skills-section.module.css';
 const groups = Array.from({length: Math.ceil(skills.length / 3)}, (_, index) =>
   skills.slice(index * 3, index * 3 + 3));
 
+/**
+ * Displays the skill grid and its mobile groups of up to three cards.
+ *
+ * @remarks
+ * On mobile, native scrolling, group buttons and arrow keys share the same
+ * scroll position. Arrow keys are handled only when the track itself has
+ * focus. Button and keyboard scrolling respect reduced-motion preferences.
+ * Crossing the 996px breakpoint keeps a focused card's group in view.
+ */
 export default function SkillsSection(): React.JSX.Element {
   const [activeGroup, setActiveGroup] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -28,6 +37,11 @@ export default function SkillsSection(): React.JSX.Element {
     return () => mobile.removeEventListener('change', resetGroup);
   }, []);
 
+  /**
+   * Scrolls to a group; the scroll handler updates the active group indicator.
+   *
+   * @param index - Zero-based position of an existing group.
+   */
   function selectGroup(index: number) {
     const track = trackRef.current;
     if (!track) return;

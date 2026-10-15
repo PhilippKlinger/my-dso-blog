@@ -1,10 +1,21 @@
+/** A portfolio skill with concrete examples of its use. */
 export interface Skill {
+  /** Unique, stable ID used by project badges and accessible card labels. */
   id: string;
   name: string;
+  /** Site-relative icon path without the deployment base URL. */
   icon: string;
+  /** Short examples shown on the card; describe actual project experience. */
   details: readonly string[];
 }
 
+/**
+ * Shared skill content in card and project-badge display order.
+ *
+ * @remarks
+ * The skills section splits this list into mobile groups of up to three.
+ * Project skill IDs must match entries here to produce a badge.
+ */
 export const skills: readonly Skill[] = [
   {
     id: 'html', name: 'HTML', icon: '/img/portfolio/skills/html.svg',

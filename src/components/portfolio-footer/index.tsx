@@ -4,6 +4,14 @@ import FooterLinkItem from '@theme/Footer/LinkItem';
 import portfolioStyles from '@site/src/css/portfolio.module.css';
 import styles from './portfolio-footer.module.css';
 
+/**
+ * Displays the homepage footer using the shared Docusaurus footer settings.
+ *
+ * @remarks
+ * The link labelled `Legal Notice` is displayed separately from the references.
+ * Keep that label in sync with `docusaurus.config.ts` when changing the footer.
+ * The back-to-top link targets the anchor provided by the Docusaurus layout.
+ */
 export default function PortfolioFooter(): React.JSX.Element {
   const {footer} = useThemeConfig();
   const arrow = useBaseUrl('/img/portfolio/footer/back-to-top.svg');
