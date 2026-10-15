@@ -9,6 +9,16 @@ const links = [
   {href: '#contact', label: 'Contact'},
 ];
 
+/**
+ * Provides the homepage navigation and its mobile menu.
+ *
+ * @remarks
+ * The header hides while scrolling down, but stays visible while the menu is
+ * open or navigation has focus. Opening the menu focuses its first link;
+ * Escape and link activation return focus to the menu button before closing.
+ * Crossing the 996px breakpoint resets the menu and keeps focus on a visible
+ * navigation control. Keep this breakpoint aligned with the component CSS.
+ */
 export default function PortfolioHeader(): React.JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -49,6 +59,7 @@ export default function PortfolioHeader(): React.JSX.Element {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMenuOpen]);
 
+  /** Returns focus to the toggle before the mobile links are hidden. */
   function closeMenu() {
     toggleRef.current?.focus();
     setIsMenuOpen(false);

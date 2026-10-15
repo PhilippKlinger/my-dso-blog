@@ -1,0 +1,31 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Portfolio Code Reference",
+  "plugin": ["./component-names.mjs"],
+  "entryPoints": [
+    "../../src/components/contact-section/index.tsx",
+    "../../src/components/hero-section/index.tsx",
+    "../../src/components/portfolio-footer/index.tsx",
+    "../../src/components/portfolio-header/index.tsx",
+    "../../src/components/project-card/index.tsx",
+    "../../src/components/project-highlights/index.tsx",
+    "../../src/components/skill-card/index.tsx",
+    "../../src/components/skills-section/index.tsx",
+    "../../src/data/projects.ts",
+    "../../src/data/skills.ts",
+    "../../src/pages/index.tsx",
+    "../../src/pages/imprint/index.tsx",
+    "../../src/theme/Navbar/index.tsx"
+  ],
+  "tsconfig": "../../tsconfig.json",
+  "out": "../../static/code-reference",
+  "readme": "none",
+  "excludeExternals": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "requiredToBeDocumented": ["Function", "Interface", "Variable"],
+  "treatWarningsAsErrors": true
+}

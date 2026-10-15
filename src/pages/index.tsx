@@ -8,6 +8,13 @@ import PortfolioFooter from '@site/src/components/portfolio-footer';
 
 import styles from '@site/src/css/portfolio.module.css';
 
+/**
+ * Assembles the portfolio sections within the Docusaurus page layout.
+ *
+ * @remarks
+ * The Navbar theme adapter supplies the header. The layout's default footer
+ * is disabled here because this page renders its own portfolio footer.
+ */
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (

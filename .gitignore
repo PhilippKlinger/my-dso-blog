@@ -1,5 +1,6 @@
 # Dependencies
 /node_modules
+/tools/code-docs/node_modules
 
 # Production
 /build
@@ -7,6 +8,7 @@
 # Generated files
 .docusaurus
 .cache-loader
+/static/code-reference/
 
 *.env
 !example.env

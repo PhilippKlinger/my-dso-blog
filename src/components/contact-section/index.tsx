@@ -1,6 +1,7 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './contact-section.module.css';
 
+/** Displays the public email and LinkedIn contact options. */
 export default function ContactSection(): React.JSX.Element {
   const mailIcon = useBaseUrl('/img/portfolio/contact/mail.svg');
   const linkedInIcon = useBaseUrl('/img/portfolio/contact/linkedin.svg');

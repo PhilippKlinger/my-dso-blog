@@ -1,14 +1,28 @@
+/** Content and link targets for one portfolio highlight. */
 export interface Project {
+  /** Unique, stable ID used for selection and accessible heading IDs. */
   id: string;
   title: string;
   description: string;
+  /** Site-relative image path without the deployment base URL. */
   image: string;
+  /** Description of the project image for readers who cannot see it. */
   imageAlt: string;
+  /** IDs from the shared skills list; badges follow that list's order. */
   skillIds: readonly string[];
+  /** Internal Docusaurus route, including a leading slash but no base URL. */
   documentation: string;
+  /** Absolute URL of the repository or the project's own report directory. */
   github: string;
 }
 
+/**
+ * Highlights in display order; keep at least one project in the list.
+ *
+ * @remarks
+ * Desktop offers all entries for selection. Mobile shows the first three.
+ * Full project reports remain available through the documentation overview.
+ */
 export const projects: readonly Project[] = [
   {
     id: 'conduit-deployment',

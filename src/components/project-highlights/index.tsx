@@ -5,6 +5,14 @@ import ProjectCard from '@site/src/components/project-card';
 import {projects} from '@site/src/data/projects';
 import styles from './project-highlights.module.css';
 
+/**
+ * Displays the selected desktop highlight and a link to all project reports.
+ *
+ * @remarks
+ * The projects list must contain at least one item for the initial selection.
+ * At widths up to 996px, CSS hides the selector and shows the first three
+ * projects together. Desktop selection does not control the mobile list.
+ */
 export default function ProjectHighlights(): React.JSX.Element {
   const [selectedProject, setSelectedProject] = useState(projects[0].id);
 

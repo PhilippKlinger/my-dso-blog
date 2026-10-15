@@ -2,6 +2,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import styles from './hero-section.module.css';
 
+/** Introduces the portfolio owner and provides a direct email link. */
 export default function HeroSection(): React.JSX.Element {
   const portraitUrl = useBaseUrl('/img/portfolio/portrait.png');
 
