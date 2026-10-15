@@ -10,7 +10,7 @@ ARG GITHUB_PROJECT="dev-blog-template"
 
 COPY . $WORKDIR
 
-RUN npm ci && npm run build
+RUN npm ci && npm run docs:install && npm run build
 
 FROM nginx:latest as runner
 

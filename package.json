@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "docs:install": "npm --prefix tools/code-docs ci",
+    "docs:build": "npm --prefix tools/code-docs run build",
+    "prestart": "npm run docs:build",
     "start": "docusaurus start",
+    "prebuild": "npm run docs:build",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
