@@ -24,7 +24,7 @@ One server runs several projects behind a single reverse proxy with TLS, plus up
 
 1. **Access and SSH hardening:** key-only login with a named sudo account, no root, no passwords. Every change is tested in a second session with a rollback ready, and checked with the effective config (`sshd -T`), because a cloud-image drop-in silently overrode my first edit.
 2. **Firewall and updates:** a provider firewall filters before traffic reaches the host, which covers the Docker bypass. Unattended security updates close known holes without a login; reboots stay manual.
-3. **Docker and deploy user:** Docker from the official repository with a verified key and hardened daemon defaults. CI gets its own account with no sudo, no shell and no forwarding, and one key per repository so a leaked key can be revoked on its own.
+3. **Docker and deploy user:** Docker from the official repository with a verified key and hardened daemon defaults (log rotation, `live-restore`, `no-new-privileges`). CI gets its own account with no sudo, no interactive shell (no TTY) and no forwarding, and one key per repository so a leaked key can be revoked on its own.
 4. **Edge proxy and network separation:** [Caddy](https://github.com/PhilippKlinger/vps-edge) is the only container that publishes ports and never touches the Docker socket. Each stack gets its own networks; databases and the local LLM have no route to the internet.
 5. **Delivery by digest:** the server never builds. A deploy repository pins every image by digest, runs a smoke test and rolls back automatically on failure.
 6. **Monitoring:** Uptime Kuma checks from the outside and serves a public status page; the dashboard is reachable only through an SSH tunnel.
