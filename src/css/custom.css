@@ -1,30 +1,156 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+@font-face {
+  font-family: 'Karla';
+  src: url('../assets/fonts/karla-latin-wght-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+@font-face {
+  font-family: 'Fira Code';
+  src: url('../assets/fonts/fira-code-latin-wght-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+/* Shared with the portfolio's palette and spacing; the light palette is adapted
+   for readable documentation. Keep component layout in the relevant CSS module. */
+:root {
+  --journal-background: #f7faf8;
+  --journal-surface: #ffffff;
+  --journal-text: #202822;
+  --journal-muted: #52615a;
+  --journal-line: #cedbd5;
+  --journal-space-xs: 0.5rem;
+  --journal-space-sm: 1rem;
+  --journal-space-md: 1.5rem;
+  --journal-space-lg: 2rem;
+  --journal-space-xl: 3rem;
+  --journal-space-section: 4.5rem;
+  --journal-page-gutter: 1rem;
+  --journal-reading-width: 60rem;
+
+  --ifm-color-primary: #087766;
+  --ifm-color-primary-dark: #076b5c;
+  --ifm-color-primary-darker: #076557;
+  --ifm-color-primary-darkest: #065347;
+  --ifm-color-primary-light: #098370;
+  --ifm-color-primary-lighter: #098975;
+  --ifm-color-primary-lightest: #0a9b85;
+  --ifm-background-color: var(--journal-background);
+  --ifm-background-surface-color: var(--journal-surface);
+  --ifm-font-color-base: var(--journal-text);
+  --ifm-color-content-secondary: var(--journal-muted);
+  --ifm-font-family-base: 'Karla', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'Fira Code', ui-monospace, monospace;
+  --ifm-heading-font-family: 'Fira Code', ui-monospace, monospace;
+  --ifm-heading-font-weight: 500;
+  --ifm-heading-line-height: 1.35;
+  --ifm-line-height-base: 1.65;
+  --ifm-code-font-size: 90%;
+  --ifm-navbar-height: 4.5rem;
+  --ifm-navbar-background-color: var(--journal-surface);
+  --ifm-navbar-shadow: none;
+  --ifm-footer-background-color: var(--journal-surface);
+  --ifm-footer-color: var(--journal-muted);
+  --ifm-footer-link-color: var(--ifm-color-primary);
+  --ifm-footer-title-color: var(--journal-text);
+  --ifm-toc-border-color: var(--journal-line);
+  --ifm-hr-background-color: var(--journal-line);
+  --ifm-global-shadow-lw: 0 1px 3px rgb(0 0 0 / 8%);
+  --docusaurus-highlighted-code-line-bg: rgb(8 119 102 / 10%);
+}
+
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --journal-background: #1c1c1c;
+  --journal-surface: #1f2e2b;
+  --journal-text: #ffffff;
+  --journal-muted: #c6c6c6;
+  --journal-line: #36574f;
+  --ifm-color-primary: #3dcfb6;
+  --ifm-color-primary-dark: #2fc0a7;
+  --ifm-color-primary-darker: #2cb69e;
+  --ifm-color-primary-darkest: #249682;
+  --ifm-color-primary-light: #54d5c0;
+  --ifm-color-primary-lighter: #60d8c5;
+  --ifm-color-primary-lightest: #83e1d2;
+  --ifm-background-color: var(--journal-background);
+  --ifm-background-surface-color: var(--journal-surface);
+  --ifm-font-color-base: var(--journal-text);
+  --ifm-color-content-secondary: var(--journal-muted);
+  --ifm-navbar-background-color: var(--journal-surface);
+  --ifm-footer-background-color: var(--journal-surface);
+  --ifm-footer-color: var(--journal-muted);
+  --ifm-footer-link-color: var(--ifm-color-primary);
+  --ifm-footer-title-color: var(--journal-text);
+  --docusaurus-highlighted-code-line-bg: rgb(61 207 182 / 12%);
+}
+
+body {
+  background: var(--journal-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 4px;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--journal-line);
+  padding-inline: var(--journal-page-gutter);
+}
+
+.navbar__inner {
+  max-width: 78rem;
+  margin-inline: auto;
+}
+
+.navbar__brand {
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1rem;
+}
+
+.navbar__title {
+  font-weight: 500;
+}
+
+.footer {
+  border-top: 1px solid var(--journal-line);
+  padding: var(--journal-space-lg) var(--journal-page-gutter);
+  font-size: 0.9375rem;
+}
+
+.footer__links {
+  margin-bottom: var(--journal-space-sm);
+}
+
+main p a,
+main li a,
+.footer__link-item {
+  text-underline-offset: 0.2em;
+}
+
+main p a,
+main li a {
+  text-decoration: underline;
+}
+
+.markdown {
+  overflow-wrap: anywhere;
+}
+
+.markdown h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.markdown pre {
+  overflow-wrap: normal;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --journal-page-gutter: 2.5rem;
+    --journal-space-section: 6rem;
+  }
 }

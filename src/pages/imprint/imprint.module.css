@@ -1,35 +1,31 @@
 .page {
-  background: var(--portfolio-color-background);
+  width: 100%;
 }
 
 .content {
-  max-width: var(--portfolio-content-width);
+  max-width: calc(var(--journal-reading-width) + 2 * var(--journal-page-gutter));
   margin-inline: auto;
-  padding: var(--portfolio-section-space) var(--portfolio-page-gutter);
+  padding: var(--journal-space-section) var(--journal-page-gutter);
+  overflow-wrap: anywhere;
 }
 
 .content h1 {
-  margin: 0 0 var(--portfolio-space-xl);
-  font-size: var(--portfolio-text-heading);
-  font-weight: var(--portfolio-weight-bold);
-  line-height: var(--portfolio-leading);
+  margin: 0 0 var(--journal-space-xl);
+  font-size: clamp(2rem, 4vw, 2.75rem);
 }
 
 .content section {
-  margin-bottom: var(--portfolio-space-xl);
+  margin-bottom: var(--journal-space-lg);
 }
 
 .content h2 {
-  margin: 0 0 var(--portfolio-space-sm);
-  font-size: var(--portfolio-text-intro);
-  font-weight: var(--portfolio-weight-semibold);
+  margin: 0 0 var(--journal-space-sm);
+  font-size: 1.25rem;
 }
 
 .content p,
 .address {
-  margin: 0 0 var(--portfolio-space-sm);
-  font-size: var(--portfolio-text-detail);
-  line-height: 1.5;
+  margin: 0 0 var(--journal-space-sm);
 }
 
 .address {
@@ -37,23 +33,11 @@
 }
 
 .content a {
-  color: var(--portfolio-color-text);
   text-decoration: underline;
   text-underline-offset: 0.2em;
-  overflow-wrap: anywhere;
-}
-
-.content a:hover {
-  color: var(--portfolio-color-paper);
-}
-
-.content a:focus-visible {
-  outline: 3px solid var(--portfolio-color-text);
-  outline-offset: 5px;
 }
 
 .backLink {
   display: inline-block;
-  margin-top: var(--portfolio-space-sm);
-  font-size: var(--portfolio-text-detail);
+  margin-top: var(--journal-space-sm);
 }

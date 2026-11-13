@@ -1,15 +1,14 @@
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import portfolioStyles from '@site/src/css/portfolio.module.css';
 import styles from './imprint.module.css';
 
-/** Displays the public legal notice with the standard Docusaurus navigation. */
+/** Displays the public legal notice with the journal's shared navigation. */
 export default function Imprint(): React.JSX.Element {
   return (
     <Layout
       title="Legal Notice"
-      description="Provider and contact information for Philipp Klinger's DevSecOps portfolio.">
-      <main className={`${portfolioStyles.portfolio} ${styles.page}`}>
+      description="Provider and contact information for Philipp Klinger's DevSecOps Learning Journal.">
+      <main className={styles.page}>
         <div className={styles.content}>
           <h1>Legal Notice (Impressum)</h1>
           <section aria-labelledby="imprint-provider">
@@ -37,7 +36,7 @@ export default function Imprint(): React.JSX.Element {
               18(2) MStV.
             </p>
           </section>
-          <Link to="/" className={styles.backLink}>Back to portfolio</Link>
+          <Link to="/" className={styles.backLink}>Back to learning journal</Link>
         </div>
       </main>
     </Layout>
