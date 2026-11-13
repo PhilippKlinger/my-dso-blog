@@ -6,6 +6,20 @@ This Docusaurus and React portfolio presents my DevSecOps projects, skills and c
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Site](https://img.shields.io/badge/site-philippklinger.github.io-informational)](https://philippklinger.github.io/my-dso-blog/)
 
+## Table of Contents
+
+- [Projects](#projects)
+- [Quickstart](#quickstart)
+  - [How to Start](#how-to-start)
+- [Usage](#usage)
+  - [Configuration](#configuration)
+  - [Customizing Content](#customizing-content)
+  - [Code Documentation](#code-documentation)
+  - [Validation](#validation)
+  - [Deployment](#deployment)
+- [Related repositories](#related-repositories)
+- [License](#license)
+
 ## Projects
 
 The [project overview](docs/projects/overview.mdx) links to all project reports.
