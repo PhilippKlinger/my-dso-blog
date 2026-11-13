@@ -1,27 +1,14 @@
 # DevSecOps Portfolio and Learning Journal
 
-## Description
+This Docusaurus and React portfolio presents my DevSecOps projects, skills and contact information. Project reports document my approach, results and evidence.
 
-This Docusaurus and React portfolio presents my DevSecOps training projects, skills and contact information. Project reports document my approach, results and evidence.
-
-[Visit the site](https://philippklinger.github.io/my-dso-blog/)
-
-## Table of Contents
-
-- [Description](#description)
-- [Projects](#projects)
-- [Quickstart](#quickstart)
-  - [How to Start](#how-to-start)
-- [Usage](#usage)
-  - [Configuration](#configuration)
-  - [Customizing Content](#customizing-content)
-  - [Code Documentation](#code-documentation)
-  - [Validation](#validation)
-  - [Deployment](#deployment)
+[![CI/CD](https://github.com/PhilippKlinger/my-dso-blog/actions/workflows/main.yml/badge.svg)](https://github.com/PhilippKlinger/my-dso-blog/actions/workflows/main.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Site](https://img.shields.io/badge/site-philippklinger.github.io-informational)](https://philippklinger.github.io/my-dso-blog/)
 
 ## Projects
 
-The [project overview](docs/projects/overview.mdx) links to all training reports.
+The [project overview](docs/projects/overview.mdx) links to all project reports.
 
 ## Quickstart
 
@@ -86,4 +73,16 @@ The build writes the production site to `build/`.
 
 ### Deployment
 
-The workflows under `.github/workflows/` typecheck and build pull requests targeting `main`. Pushes to `main` deploy the built site to GitHub Pages; set the Pages source to **GitHub Actions**.
+The workflows under `.github/workflows/` typecheck and build pull requests targeting `main`; the build is a required check before a merge. Pushes to `main` deploy the built site to GitHub Pages; set the Pages source to **GitHub Actions**.
+
+## Related repositories
+
+| Repository | Role |
+|---|---|
+| [v-server-setup](https://github.com/PhilippKlinger/v-server-setup) | Commands and checks behind the report "V-Server Setup and Hardening" |
+| [vps-edge](https://github.com/PhilippKlinger/vps-edge), [vps-monitoring](https://github.com/PhilippKlinger/vps-monitoring), [vps-incident-assistant](https://github.com/PhilippKlinger/vps-incident-assistant) | The VPS platform the report describes |
+| [videoflix-deploy](https://github.com/PhilippKlinger/videoflix-deploy) | Production stack running on that platform |
+
+## License
+
+[MIT](LICENSE)
