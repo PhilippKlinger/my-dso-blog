@@ -1,4 +1,4 @@
-# DevSecOps Portfolio and Learning Journal
+# DevSecOps Portfolio
 
 This Docusaurus and React portfolio presents my DevSecOps projects, skills and contact information. Project reports document my approach, results and evidence.
 
