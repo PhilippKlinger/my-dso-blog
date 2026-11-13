@@ -1,6 +1,6 @@
 ---
 title: Code Reference
-description: Generated documentation for the portfolio's own React components and data models.
+description: Generated documentation for the learning journal's React pages.
 sidebar_position: 3
 ---
 
@@ -10,20 +10,15 @@ import Link from '@docusaurus/Link';
 
 <Link to="pathname:///code-reference/index.html" target="_self">Open the generated code reference</Link>
 
-The reference covers this portfolio's own React components, pages, props and shared
-project/skill data. It is generated from the TypeScript source and TSDoc comments
-with TypeDoc each time the website is built.
+The reference documents this learning journal's home and legal-notice pages.
+It is generated from the TypeScript source and TSDoc comments with TypeDoc
+each time the website is built.
 
-Comments explain component responsibilities, keyboard and focus behaviour,
-responsive views and data requirements. TypeScript provides the types. The
-reference describes the application's code; it does not expose an HTTP API.
+Pages appear under their declared function names, `Home` and `Imprint`.
+A small local TypeDoc plugin applies these names to the reference; the
+application continues to use default exports.
 
-Components appear under their declared names, such as `PortfolioHeader` and
-`SkillCard`. A small local TypeDoc plugin applies these names to the reference;
-the application continues to use default exports. Props and data models also
-appear under their own names.
-
-Unchanged template helpers, third-party code, CSS rules and deployment settings
+Third-party code, unchanged template helpers, CSS rules and deployment settings
 are outside the generated reference. The repository README explains setup,
 configuration and deployment. Project reports describe the separate training
 projects.
