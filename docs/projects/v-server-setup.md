@@ -32,7 +32,7 @@ One server runs several projects behind a single reverse proxy with TLS, plus up
 
 ## Solution
 
-The server accepts only key-based SSH and serves only the reverse proxy to the internet. Security updates install themselves, and each stack is isolated in its own networks. Deploys run from CI through a restricted account with images pinned by digest, a smoke test and rollback. Monitoring is public, and backups are verified by a restore test. Known limits are written down: Kuma runs on the server it watches, and backups stay on the VPS.
+The server accepts only key-based SSH and serves only the reverse proxy to the internet. Security updates install themselves, and each stack is isolated in its own networks. Deploys run from CI through a restricted account with images pinned by digest, a smoke test and rollback. Monitoring is public, and backups are verified by a restore test.
 
 ## Evidence
 
