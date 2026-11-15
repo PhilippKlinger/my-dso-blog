@@ -1,6 +1,6 @@
-# DevSecOps Portfolio and Learning Journal
+# DevSecOps Learning Journal
 
-This Docusaurus and React portfolio presents my DevSecOps projects, skills and contact information. Project reports document my approach, results and evidence.
+DevSecOps project reports: tasks, implementation, results and lessons learned. Built with Docusaurus and published on GitHub Pages.
 
 [![CI/CD](https://github.com/PhilippKlinger/my-dso-blog/actions/workflows/main.yml/badge.svg)](https://github.com/PhilippKlinger/my-dso-blog/actions/workflows/main.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
